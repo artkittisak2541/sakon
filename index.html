@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakon Nakhon Tourism - จังหวัดสกลนคร</title>
+    <title>Sakon Nakhon Tourism - เที่ยวสกลนคร</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #0d9488;
@@ -15,12 +14,9 @@
             --light-color: #f8fafc;
             --dark-color: #1e293b;
             --gray-color: #64748b;
-            --success-color: #10b981;
-            --luxury-gold: #d4af37;
-            --luxury-bronze: #cd7f32;
-            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --radius: 12px;
-            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --nature-color: #10b981;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 8px;
         }
         
         * {
@@ -31,38 +27,32 @@
         
         body {
             font-family: 'Noto Sans Thai', sans-serif;
-            line-height: 1.7;
+            line-height: 1.6;
             color: var(--dark-color);
-            background-color: #f8fafc;
-            overflow-x: hidden;
+            background-color: #f1f5f9;
         }
         
         h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Prompt', sans-serif;
             font-weight: 600;
-            margin-bottom: 1.2rem;
-            color: var(--dark-color);
+            margin-bottom: 1rem;
         }
         
         .container {
             width: 100%;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        /* Luxury Header Styles */
+        /* Header Styles */
         header {
             background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            position: fixed;
+            box-shadow: var(--shadow);
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
+            z-index: 100;
+            transition: all 0.3s;
         }
         
         .header-container {
@@ -75,68 +65,883 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
         
         .logo-icon {
-            background: linear-gradient(135deg, var(--primary-color), var(--luxury-gold));
+            background-color: var(--primary-color);
             color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .logo-text {
+            font-family: 'Prompt', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        
+        .logo-text span {
+            color: var(--accent-color);
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-right: 20px;
+        }
+        
+        /* Visitor Counter */
+        .visitor-counter {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #f0f9ff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            border: 1px solid #bae6fd;
+        }
+        
+        .visitor-counter i {
+            font-size: 0.8rem;
+        }
+        
+        .counter-number {
+            font-weight: 700;
+            font-family: 'Prompt', sans-serif;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav a.active {
+            color: var(--primary-color);
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .contact-info {
+            text-align: right;
+        }
+        
+        .phone {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        
+        .email {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(13, 148, 136, 0.75), rgba(20, 184, 166, 0.8)), url('https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 14px 30px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--shadow);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Services Section - Changed to Attractions */
+        .attractions {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark-color);
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .attraction-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .attraction-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .attraction-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .attraction-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .attraction-card:hover .attraction-image img {
+            transform: scale(1.05);
+        }
+        
+        .attraction-icon {
+            background-color: var(--primary-color);
+            color: white;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .attraction-content {
+            padding: 25px;
+        }
+        
+        .attraction-content h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            color: var(--dark-color);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray-color);
+        }
+        
+        .about-features {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature i {
+            color: var(--nature-color);
+            font-size: 1.2rem;
+        }
+        
+        .about-image {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Cultural Section */
+        .cultural-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .cultural-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .cultural-image-container {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 500px;
+            position: relative;
+        }
+        
+        .cultural-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cultural-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(13, 148, 136, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cultural-stats {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--dark-color);
+            padding: 15px 20px;
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 10;
+            text-align: center;
+        }
+        
+        .cultural-stats-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .cultural-info {
+            padding: 20px;
+        }
+        
+        .cultural-info h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .cultural-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .cultural-control-btn {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: 'Prompt', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .cultural-control-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .cultural-info-panel {
+            background-color: #f0f9ff;
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-top: 25px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .cultural-info-panel h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Festivals Page Styles */
+        .festivals-section {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+        
+        .festivals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .festival-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border: 1px solid #e2e8f0;
+            height: 100%;
+        }
+        
+        .festival-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .festival-icon {
+            background-color: var(--nature-color);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .festival-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .festival-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .festival-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        
+        .festival-list i {
+            color: var(--nature-color);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        
+        /* Destinations Section */
+        .destinations {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .destination-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .destination-header {
+            background-color: #f1f5f9;
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .destination-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .destination-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+        
+        .destination-content {
+            padding: 20px;
+        }
+        
+        .destination-details {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .destination-details li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .destination-details i {
+            color: var(--primary-color);
+            width: 16px;
+        }
+        
+        .visit-button {
+            display: block;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .visit-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .view-all {
+            text-align: center;
+        }
+        
+        /* Food Section */
+        .food {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+        
+        .food-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .food-info-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .food-info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .food-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .food-detail i {
+            background-color: #e0f2fe;
+            color: var(--primary-color);
             width: 50px;
             height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .contact-form {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 30px;
             box-shadow: var(--shadow);
         }
         
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 2rem;
-            background: linear-gradient(to right, var(--primary-color), var(--luxury-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
+        .form-group {
+            margin-bottom: 20px;
         }
         
-        /* Language Switcher - Enhanced */
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: var(--radius);
+            font-family: 'Noto Sans Thai', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: var(--radius);
+            font-family: 'Prompt', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .submit-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #334155;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Page Content Styles */
+        .page-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+        }
+        
+        .page-content {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        /* Hidden class for multi-page simulation */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Form Success Message */
+        .form-success {
+            background-color: #d1fae5;
+            color: #065f46;
+            padding: 15px;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .form-success.active {
+            display: block;
+        }
+        
+        /* Cultural Photos */
+        .cultural-photos {
+            margin-top: 50px;
+        }
+        
+        .cultural-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .cultural-item-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .cultural-item-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .item-photo {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .item-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .cultural-item-card:hover .item-photo img {
+            transform: scale(1.05);
+        }
+        
+        .item-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .item-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .item-location {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .item-description {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+        
+        /* Language Dropdown Styles */
         .language-switcher {
             position: relative;
-            z-index: 1001;
+            z-index: 101;
         }
 
         .language-dropdown {
             position: relative;
-            width: 140px;
+            width: 120px;
         }
 
         .language-selected {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 15px;
+            padding: 8px 12px;
             background-color: white;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid #cbd5e1;
             border-radius: var(--radius);
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s;
             font-size: 0.9rem;
             font-weight: 500;
             color: var(--dark-color);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
         .language-selected:hover {
-            border-color: var(--luxury-gold);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+            border-color: var(--primary-color);
         }
 
         .language-selected i {
             font-size: 0.8rem;
-            color: var(--luxury-gold);
+            color: var(--gray-color);
             transition: transform 0.3s;
         }
 
@@ -145,8 +950,8 @@
         }
 
         .flag-icon {
-            margin-right: 8px;
-            font-size: 1.2rem;
+            margin-right: 6px;
+            font-size: 1.1rem;
         }
 
         .language-options {
@@ -155,17 +960,15 @@
             left: 0;
             right: 0;
             background-color: white;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid #cbd5e1;
             border-radius: var(--radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            margin-top: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 4px;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-15px);
-            transition: var(--transition);
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
             z-index: 1000;
-            max-height: 300px;
-            overflow-y: auto;
         }
 
         .language-dropdown.active .language-options {
@@ -177,792 +980,132 @@
         .language-option {
             display: flex;
             align-items: center;
-            padding: 12px 15px;
+            padding: 10px 12px;
             cursor: pointer;
             transition: background-color 0.2s;
             font-size: 0.9rem;
         }
 
         .language-option:hover {
-            background-color: rgba(212, 175, 55, 0.05);
+            background-color: #f1f5f9;
         }
 
         .language-option.active {
-            background-color: rgba(212, 175, 55, 0.1);
-            color: var(--dark-color);
-            border-left: 3px solid var(--luxury-gold);
+            background-color: #e0f2fe;
+            color: var(--primary-color);
+        }
+
+        .language-option.active .flag-icon {
+            opacity: 1;
         }
 
         .language-option:not(:last-child) {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Visitor Counter */
-        .visitor-counter {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(to right, rgba(13, 148, 136, 0.1), rgba(212, 175, 55, 0.1));
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            color: var(--primary-color);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        
-        .visitor-counter i {
-            font-size: 0.8rem;
-            color: var(--luxury-gold);
-        }
-        
-        .counter-number {
-            font-weight: 700;
-            font-family: 'Prompt', sans-serif;
-            color: var(--primary-color);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: var(--dark-color);
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 5px 0;
-            position: relative;
-            font-size: 1.05rem;
-        }
-        
-        nav a:hover {
-            color: var(--luxury-gold);
-        }
-        
-        nav a.active {
-            color: var(--luxury-gold);
-        }
-        
-        nav a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, var(--primary-color), var(--luxury-gold));
-        }
-        
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--luxury-gold);
-        }
-        
-        /* Hero Section - Luxury Style */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            padding: 180px 0 120px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 25px;
-            line-height: 1.2;
-            color: white;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: var(--transition);
-        }
-        
-        .hero h1.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: var(--transition);
-            transition-delay: 0.2s;
-        }
-        
-        .hero p.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(to right, var(--primary-color), var(--luxury-gold));
-            color: white;
-            padding: 16px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            border: none;
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: var(--transition);
-            transition-delay: 0.4s;
-        }
-        
-        .cta-button.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            letter-spacing: 1px;
-        }
-        
-        /* Section Styles */
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2.8rem;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 20px;
-            color: var(--dark-color);
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary-color), var(--luxury-gold));
-            border-radius: 2px;
-        }
-        
-        .section-title p {
-            font-size: 1.2rem;
-            color: var(--gray-color);
-            max-width: 700px;
-            margin: 20px auto 0;
-        }
-        
-        /* Attractions Section */
-        .attractions {
-            padding: 100px 0;
-            background-color: white;
-        }
-        
-        .attractions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-        
-        .attraction-card {
-            background-color: white;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            opacity: 0;
-            transform: translateX(-50px);
-        }
-        
-        .attraction-card.animate-left {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .attraction-card.animate-right {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .attraction-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
-        
-        .attraction-image {
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .attraction-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-        
-        .attraction-card:hover .attraction-image img {
-            transform: scale(1.1);
-        }
-        
-        .attraction-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(to right, var(--primary-color), var(--luxury-gold));
-            color: white;
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            z-index: 10;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .attraction-content {
-            padding: 30px;
-        }
-        
-        .attraction-content h3 {
-            font-size: 1.6rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        .attraction-content p {
-            color: var(--gray-color);
-            margin-bottom: 20px;
-        }
-        
-        .attraction-meta {
-            display: flex;
-            justify-content: space-between;
-            color: var(--gray-color);
-            font-size: 0.9rem;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Culture Section */
-        .culture {
-            padding: 100px 0;
-            background-color: #f8fafc;
-        }
-        
-        .culture-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .culture-content {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: var(--transition);
-        }
-        
-        .culture-content.animate {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .culture-content h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 25px;
-        }
-        
-        .culture-features {
-            margin-top: 30px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        
-        .feature i {
-            color: var(--luxury-gold);
-            font-size: 1.5rem;
-            margin-top: 5px;
-        }
-        
-        .culture-image {
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            height: 500px;
-            position: relative;
-            opacity: 0;
-            transform: translateX(50px);
-            transition: var(--transition);
-        }
-        
-        .culture-image.animate {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .culture-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.8s ease;
-        }
-        
-        .culture-image:hover img {
-            transform: scale(1.05);
+            border-bottom: 1px solid #e2e8f0;
         }
         
         /* Gallery Section */
         .gallery {
-            padding: 100px 0;
-            background-color: white;
+            padding: 80px 0;
+            background-color: #f8fafc;
         }
         
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 20px;
+            margin-top: 30px;
         }
         
         .gallery-item {
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
-            height: 300px;
+            height: 250px;
             position: relative;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: var(--transition);
-        }
-        
-        .gallery-item.animate {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            transition: transform 0.5s;
         }
         
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
         .gallery-overlay {
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-            display: flex;
-            align-items: flex-end;
-            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(10px);
             opacity: 0;
-            transition: var(--transition);
+            transition: all 0.3s;
         }
         
         .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-        
-        .gallery-overlay h4 {
-            color: white;
-            font-size: 1.3rem;
-        }
-        
-        /* Activities Section */
-        .activities {
-            padding: 100px 0;
-            background-color: #f8fafc;
-        }
-        
-        .activities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .activity-card {
-            background-color: white;
-            border-radius: var(--radius);
-            padding: 40px 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            opacity: 0;
-            transform: translateY(50px);
-        }
-        
-        .activity-card.animate {
-            opacity: 1;
             transform: translateY(0);
-        }
-        
-        .activity-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-            border-color: rgba(212, 175, 55, 0.3);
-        }
-        
-        .activity-icon {
-            background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(212, 175, 55, 0.1));
-            color: var(--luxury-gold);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 25px;
-            transition: var(--transition);
-        }
-        
-        .activity-card:hover .activity-icon {
-            background: linear-gradient(135deg, var(--primary-color), var(--luxury-gold));
-            color: white;
-            transform: rotateY(180deg);
-        }
-        
-        .activity-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        /* Contact Section */
-        .contact {
-            padding: 100px 0;
-            background-color: white;
-        }
-        
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-        
-        .contact-info {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: var(--transition);
-        }
-        
-        .contact-info.animate {
             opacity: 1;
-            transform: translateX(0);
         }
         
-        .contact-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 25px;
-            font-size: 2rem;
-        }
-        
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .contact-detail i {
-            background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(212, 175, 55, 0.1));
-            color: var(--luxury-gold);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-        
-        .contact-form {
-            background-color: #f8fafc;
-            border-radius: var(--radius);
-            padding: 40px;
-            box-shadow: var(--shadow);
-            opacity: 0;
-            transform: translateX(50px);
-            transition: var(--transition);
-        }
-        
-        .contact-form.animate {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 500;
-            color: var(--dark-color);
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 15px 20px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: var(--radius);
-            font-family: 'Noto Sans Thai', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition);
+        /* Weather Widget */
+        .weather-widget {
             background-color: white;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--luxury-gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
-        }
-        
-        .submit-button {
-            background: linear-gradient(to right, var(--primary-color), var(--luxury-gold));
-            color: white;
-            border: none;
-            padding: 16px 35px;
-            border-radius: 50px;
-            font-family: 'Prompt', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            width: 100%;
-            box-shadow: var(--shadow);
-        }
-        
-        .submit-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-            letter-spacing: 1px;
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(to right, var(--dark-color), #0f172a);
-            color: white;
-            padding: 80px 0 30px;
-        }
-        
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 50px;
-            margin-bottom: 50px;
-        }
-        
-        .footer-column h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary-color), var(--luxury-gold));
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 15px;
-        }
-        
-        .footer-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--luxury-gold);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover {
-            background: linear-gradient(135deg, var(--primary-color), var(--luxury-gold));
-            transform: translateY(-5px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94a3b8;
-            font-size: 0.95rem;
-        }
-        
-        /* Page Content Styles */
-        .page {
-            display: none;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        .page-header {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            padding: 150px 0 80px;
-            text-align: center;
-        }
-        
-        .page-header h1 {
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 20px;
-        }
-        
-        .page-content {
-            padding: 80px 0;
-            background-color: white;
-        }
-        
-        /* Form Success Message */
-        .form-success {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.2));
-            color: #065f46;
+            border-radius: var(--radius);
             padding: 20px;
-            border-radius: var(--radius);
-            margin-bottom: 25px;
-            display: none;
-            border-left: 4px solid var(--success-color);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
-        .form-success.active {
-            display: block;
-            animation: fadeInUp 0.5s ease;
+        .weather-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         
-        /* Animation Keyframes */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .weather-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
         }
         
-        /* Floating Elements */
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 1;
+        .weather-temp {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
         }
         
-        .floating-element {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+        .weather-details {
+            font-size: 0.9rem;
+            color: var(--gray-color);
         }
         
         /* Responsive Styles */
-        @media (max-width: 1200px) {
-            .culture-container,
-            .contact-container {
+        @media (max-width: 992px) {
+            .about-content,
+            .food-container,
+            .cultural-container {
                 grid-template-columns: 1fr;
-                gap: 50px;
             }
             
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
-        }
-        
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3rem;
+            
+            .cultural-image-container {
+                order: 2;
+                height: 400px;
             }
             
-            .section-title h2 {
-                font-size: 2.4rem;
-            }
-            
-            .attractions-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            .cultural-info {
+                order: 1;
             }
         }
         
@@ -971,14 +1114,15 @@
                 flex-wrap: wrap;
             }
             
-            .language-dropdown {
-                width: 120px;
+            .language-switcher {
+                order: 2;
+                margin-right: 0;
             }
             
             nav {
                 order: 4;
                 width: 100%;
-                margin-top: 20px;
+                margin-top: 15px;
                 display: none;
             }
             
@@ -992,7 +1136,7 @@
             }
             
             nav li {
-                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                border-bottom: 1px solid #e2e8f0;
             }
             
             nav a {
@@ -1004,19 +1148,19 @@
                 display: block;
             }
             
+            .header-contact {
+                display: none;
+            }
+            
             .visitor-counter {
                 display: none;
             }
             
-            .hero {
-                padding: 150px 0 80px;
-            }
-            
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
-            .culture-features {
+            .about-features {
                 grid-template-columns: 1fr;
             }
             
@@ -1024,34 +1168,15 @@
                 grid-template-columns: 1fr;
             }
             
-            .page-header h1 {
-                font-size: 2.8rem;
+            .cultural-label {
+                font-size: 0.9rem;
+                padding: 8px 15px;
             }
             
-            .contact-form {
-                padding: 30px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .attractions-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .activities-grid {
-                grid-template-columns: 1fr;
+            .weather-widget {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
             }
         }
     </style>
@@ -1061,11 +1186,11 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <div class="logo-icon">SN</div>
-                <div class="logo-text">สกลนคร</div>
+                <div class="logo-icon">สข</div>
+                <div class="logo-text">สกลนคร<span>ท่องเที่ยว</span></div>
             </div>
             
-            <!-- Enhanced Language Switcher with 10 languages -->
+            <!-- Language Switcher -->
             <div class="language-switcher">
                 <div class="language-dropdown">
                     <div class="language-selected">
@@ -1074,7 +1199,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="language-options">
-                        <div class="language-option active" data-lang="th">
+                        <div class="language-option" data-lang="th">
                             <span class="flag-icon">🇹🇭</span>
                             <span>ไทย</span>
                         </div>
@@ -1084,35 +1209,7 @@
                         </div>
                         <div class="language-option" data-lang="zh-CN">
                             <span class="flag-icon">🇨🇳</span>
-                            <span>中文 (จีน)</span>
-                        </div>
-                        <div class="language-option" data-lang="ja">
-                            <span class="flag-icon">🇯🇵</span>
-                            <span>日本語 (ญี่ปุ่น)</span>
-                        </div>
-                        <div class="language-option" data-lang="ko">
-                            <span class="flag-icon">🇰🇷</span>
-                            <span>한국어 (เกาหลี)</span>
-                        </div>
-                        <div class="language-option" data-lang="fr">
-                            <span class="flag-icon">🇫🇷</span>
-                            <span>Français (ฝรั่งเศส)</span>
-                        </div>
-                        <div class="language-option" data-lang="de">
-                            <span class="flag-icon">🇩🇪</span>
-                            <span>Deutsch (เยอรมัน)</span>
-                        </div>
-                        <div class="language-option" data-lang="es">
-                            <span class="flag-icon">🇪🇸</span>
-                            <span>Español (สเปน)</span>
-                        </div>
-                        <div class="language-option" data-lang="ru">
-                            <span class="flag-icon">🇷🇺</span>
-                            <span>Русский (รัสเซีย)</span>
-                        </div>
-                        <div class="language-option" data-lang="ar">
-                            <span class="flag-icon">🇸🇦</span>
-                            <span>العربية (อาหรับ)</span>
+                            <span>中文</span>
                         </div>
                     </div>
                 </div>
@@ -1120,7 +1217,7 @@
             
             <div class="visitor-counter">
                 <i class="fas fa-users"></i>
-                <span>ผู้เข้าชม: <span class="counter-number" id="visitorCount">12,847</span></span>
+                <span>ผู้เข้าชม: <span class="counter-number" id="visitorCount">1,865</span></span>
             </div>
             
             <div class="mobile-toggle" id="mobileToggle">
@@ -1131,29 +1228,58 @@
                 <ul>
                     <li><a href="#home" class="nav-link active" data-page="home">หน้าแรก</a></li>
                     <li><a href="#attractions" class="nav-link" data-page="attractions">สถานที่ท่องเที่ยว</a></li>
-                    <li><a href="#culture" class="nav-link" data-page="culture">วัฒนธรรม</a></li>
-                    <li><a href="#gallery" class="nav-link" data-page="gallery">แกลเลอรี่</a></li>
-                    <li><a href="#activities" class="nav-link" data-page="activities">กิจกรรม</a></li>
-                    <li><a href="#contact" class="nav-link" data-page="contact">ติดต่อ</a></li>
+                    <li><a href="#about" class="nav-link" data-page="about">เกี่ยวกับจังหวัด</a></li>
+                    <li><a href="#festivals" class="nav-link" data-page="festivals">ประเพณีและวัฒนธรรม</a></li>
+                    <li><a href="#destinations" class="nav-link" data-page="destinations">จุดเช็คอินแนะนำ</a></li>
+                    <li><a href="#food" class="nav-link" data-page="food">อาหารขึ้นชื่อ</a></li>
                 </ul>
             </nav>
+            
+            <div class="header-contact">
+                <div class="contact-info">
+                    <div class="phone">042-740888</div>
+                    <div class="email">TourismSakon@gmail.com</div>
+                </div>
+            </div>
         </div>
         <div id="google_translate_element" style="display:none"></div>
-<script>
-function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'th'}, 'google_translate_element');}
-function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c.value=l;c.dispatchEvent(new Event("change"));}}
-</script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <script>
+            function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'th'}, 'google_translate_element');}
+            function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c.value=l;c.dispatchEvent(new Event("change"));}}
+        </script>
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     </header>
 
     <!-- Home Page -->
     <section id="home" class="page active">
         <!-- Hero Section -->
-        <section class="hero" id="hero">
+        <section class="hero">
             <div class="container">
-                <h1 id="hero-title">จังหวัดสกลนคร ดินแดนแห่งวัฒนธรรมและธรรมชาติ</h1>
-                <p id="hero-desc">พบกับความงดงามของอีสานเหนือ วัฒนธรรมล้านช้าง ประเพณีอันหลากหลาย และธรรมชาติที่ยังบริสุทธิ์</p>
-                <a href="#attractions" class="cta-button nav-link" data-page="attractions" id="hero-cta">เริ่มต้นการเดินทาง</a>
+                <h1>จังหวัดสกลนคร เมืองแห่งวัฒนธรรมและธรรมชาติ</h1>
+                
+                <p>สัมผัสความงามของทะเลสาบ นมัสการหลวงพ่อพระองค์แสน พิสูจน์รอยพระพุทธบาทภูเพ็ก และดื่มด่ำกับวัฒนธรรมอีสานเหนือ</p>
+                
+                <a href="#destinations" class="cta-button nav-link" data-page="destinations">สำรวจสถานที่ท่องเที่ยว</a>
+            </div>
+        </section>
+
+        <!-- Weather Widget -->
+        <section class="container" style="margin-top: -40px; margin-bottom: 40px; position: relative; z-index: 10;">
+            <div class="weather-widget">
+                <div class="weather-info">
+                    <div class="weather-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div>
+                        <div class="weather-temp">32°C</div>
+                        <div class="weather-details">สภาพอากาศ: แจ่มใส • ความชื้น: 65%</div>
+                    </div>
+                </div>
+                <div>
+                    <div><strong>สกลนคร, ประเทศไทย</strong></div>
+                    <div>อุณหภูมิสูงสุด: 34°C, ต่ำสุด: 24°C</div>
+                    <div>เหมาะสำหรับการท่องเที่ยว</div>
+                </div>
             </div>
         </section>
 
@@ -1161,170 +1287,285 @@ function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c
         <section class="attractions" id="attractions-section">
             <div class="container">
                 <div class="section-title">
-                    <h2 id="attractions-title">สถานที่ท่องเที่ยวแนะนำ</h2>
-                    <p id="attractions-desc">ค้นพบความงามอันหลากหลายของจังหวัดสกลนคร จากธรรมชาติไปจนถึงสถานที่ศักดิ์สิทธิ์</p>
+                    <h2>สถานที่ท่องเที่ยวเด่น</h2>
+                    
+                    <p>แหล่งท่องเที่ยวสำคัญที่คุณไม่ควรพลาดเมื่อมาเยือนสกลนคร</p>
                 </div>
                 
                 <div class="attractions-grid">
-                    <div class="attraction-card" data-animate="left">
+                    <div class="attraction-card">
                         <div class="attraction-image">
-                            <div class="attraction-badge">แลนด์มาร์ค</div>
-                            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ภูพาน">
+                            <img src="https://images.unsplash.com/photo-1605369629633-b7d6c4d6f6c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ทะเลสาบหนองหาน">
                         </div>
                         <div class="attraction-content">
-                            <h3>อุทยานแห่งชาติภูพาน</h3>
-                            <p>อุทยานแห่งชาติที่มีความสวยงามของธรรมชาติ ป่าไม้เขียวขจี น้ำตกสวยงาม และจุดชมวิวที่สามารถมองเห็นทัศนียภาพของจังหวัดสกลนครได้อย่างกว้างไกล</p>
-                            <div class="attraction-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> อำเภอภูพาน</span>
-                                <span><i class="fas fa-clock"></i> เปิดทุกวัน 8.00-18.00 น.</span>
-                            </div>
+                            <h3>ทะเลสาบหนองหาน</h3>
+                            
+                            <p>ทะเลสาบน้ำจืดขนาดใหญ่ที่สุดในภาคอีสาน มีทัศนียภาพสวยงาม พร้อมกิจกรรมนั่งเรือชมวิว ตกปลา และชมพระอาทิตย์ตกดินที่สวยที่สุดแห่งหนึ่งในประเทศไทย</p>
                         </div>
                     </div>
                     
-                    <div class="attraction-card" data-animate="right">
+                    <div class="attraction-card">
                         <div class="attraction-image">
-                            <div class="attraction-badge">วัฒนธรรม</div>
-                            <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="พระธาตุเชิงชุม">
+                            <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="พระธาตุภูเพ็ก">
                         </div>
                         <div class="attraction-content">
-                            <h3>พระธาตุเชิงชุมวรวิหาร</h3>
-                            <p>วัดคู่บ้านคู่เมืองสกลนคร เป็นที่ประดิษฐานพระธาตุเชิงชุม ซึ่งเป็นพระธาตุศักดิ์สิทธิ์ประจำจังหวัด สร้างขึ้นตั้งแต่สมัยขอมเรืองอำนาจ</p>
-                            <div class="attraction-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> ตัวเมืองสกลนคร</span>
-                                <span><i class="fas fa-clock"></i> เปิดทุกวัน 6.00-18.00 น.</span>
-                            </div>
+                            <h3>พระธาตุภูเพ็ก</h3>
+                            
+                            <p>โบราณสถานสำคัญอายุมากกว่า 1,000 ปี ตั้งอยู่บนยอดเขาสูง สร้างด้วยหินทรายสีแดงชมพู มีรอยพระพุทธบาทประดิษฐานอยู่บนยอดเขา</p>
                         </div>
                     </div>
                     
-                    <div class="attraction-card" data-animate="left">
+                    <div class="attraction-card">
                         <div class="attraction-image">
-                            <div class="attraction-badge">ธรรมชาติ</div>
-                            <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="หนองหาร">
+                            <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="วัดพระธาตุเชิงชุม">
                         </div>
                         <div class="attraction-content">
-                            <h3>หนองหารหลวง</h3>
-                            <p>ทะเลสาบน้ำจืดที่ใหญ่ที่สุดในภาคอีสาน มีความสำคัญทั้งทางนิเวศวิทยาและทางวัฒนธรรม เป็นแหล่งประมงและแหล่งท่องเที่ยวสำคัญของจังหวัด</p>
-                            <div class="attraction-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> อำเภอเมืองสกลนคร</span>
-                                <span><i class="fas fa-clock"></i> เปิดตลอด 24 ชั่วโมง</span>
-                            </div>
+                            <h3>วัดพระธาตุเชิงชุม</h3>
+                            
+                            <p>วัดคู่บ้านคู่เมืองสกลนคร ประดิษฐานหลวงพ่อพระองค์แสน พระพุทธรูปศักดิ์สิทธิ์ที่ชาวสกลนครให้ความเคารพนับถือมากว่า 300 ปี</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Culture Section -->
-        <section class="culture" id="culture-section">
+        <!-- Cultural Section -->
+        <section class="cultural-section">
             <div class="container">
-                <div class="culture-container">
-                    <div class="culture-content" data-animate="left">
-                        <h2>วัฒนธรรมและประเพณีสกลนคร</h2>
-                        <p>จังหวัดสกลนครเป็นดินแดนแห่งวัฒนธรรมล้านช้างที่มีความหลากหลายและมีชีวิตชีวา ประกอบด้วยกลุ่มชาติพันธุ์ต่างๆ ทั้งไทยอีสาน ไทยวน ภูไท และผู้ไทย</p>
+                <div class="section-title">
+                    <h2>วัฒนธรรมอีสานเหนือ</h2>
+                    
+                    <p>สัมผัสศิลปวัฒนธรรมอันเป็นเอกลักษณ์ของชาวสกลนคร</p>
+                </div>
+                
+                <div class="cultural-container">
+                    <div class="cultural-image-container">
+                        <div class="cultural-label">
+                            <i class="fas fa-landmark"></i> วิถีชีวิตชาวสกลนคร
+                        </div>
                         
-                        <div class="culture-features">
+                        <div class="cultural-stats">
+                            <div class="cultural-stats-number">50+</div>
+                            <div>แหล่งวัฒนธรรม</div>
+                        </div>
+                        
+                        <img src="https://images.unsplash.com/photo-1547825407-12d434919a46?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="วัฒนธรรมสกลนคร">
+                    </div>
+                    
+                    <div class="cultural-info">
+                        <h3>อัตลักษณ์ทางวัฒนธรรม</h3>
+                        
+                        <p>สกลนครมีวัฒนธรรมที่เป็นเอกลักษณ์ผสมผสานระหว่างล้านช้างและอีสานเหนือ ผ่านภาษาพูด อาหาร การแต่งกาย และประเพณีต่าง ๆ</p>
+                        
+                        <div class="cultural-info-panel">
+                            <h4><i class="fas fa-lightbulb"></i> ความเป็นมาของวัฒนธรรม</h4>
+                            <p>สกลนครเคยเป็นศูนย์กลางของอาณาจักรศรีโคตรบูร ซึ่งมีอายุเก่าแก่กว่า 1,400 ปี มีวัฒนธรรมที่โดดเด่นด้านการทอผ้า งานหัตถกรรม และดนตรีพื้นบ้าน</p>
+                        </div>
+                        
+                        <div class="about-features" style="margin-top: 30px;">
                             <div class="feature">
-                                <i class="fas fa-landmark"></i>
-                                <div>
-                                    <h4>งานประเพณี</h4>
-                                    <p>งานบุญใหญ่ห่มผ้าพระธาตุเชิงชุม, งานแข่งเรือยาว, งานบุญบั้งไฟ</p>
-                                </div>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-utensils"></i>
-                                <div>
-                                    <h4>อาหารพื้นเมือง</h4>
-                                    <p>แกงอ่อม, ลาบ, ส้า, แจ่วบอง, ปลาเผา, หมกหน่อไม้</p>
-                                </div>
+                                <i class="fas fa-tshirt"></i>
+                                <span>ผ้าทอพื้นเมืองลวดลายสวยงาม</span>
                             </div>
                             <div class="feature">
                                 <i class="fas fa-music"></i>
-                                <div>
-                                    <h4>ดนตรีพื้นบ้าน</h4>
-                                    <p>หมอลำ, เจรียง, กันตรึม, วงโปงลาง</p>
-                                </div>
+                                <span>ดนตรีพื้นบ้านโปงลางและแคน</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-utensils"></i>
+                                <span>อาหารอีสานเหนือรสชาติจัดจ้าน</span>
                             </div>
                             <div class="feature">
                                 <i class="fas fa-hands"></i>
-                                <div>
-                                    <h4>หัตถกรรม</h4>
-                                    <p>ผ้าฝ้ายทอมือ, ผ้าไหม, เครื่องปั้นดินเผา, ผลิตภัณฑ์จากไม้ไผ่</p>
-                                </div>
+                                <span>ประเพณีบุญบั้งไฟและบุญผะเหวด</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- รูปวัฒนธรรม -->
+                <div class="cultural-photos">
+                    <div class="cultural-items-grid">
+                        <div class="cultural-item-card">
+                            <div class="item-photo">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ผ้าทอพื้นเมือง">
+                            </div>
+                            <div class="item-info">
+                                <h4>ผ้าทอพื้นเมือง</h4>
+                                <div class="item-location">อำเภอเมืองสกลนคร</div>
+                                <div class="item-description">ผ้าทอมือลวดลายเอกลักษณ์ของชาวไทโย้ย</div>
+                            </div>
+                        </div>
+                        
+                        <div class="cultural-item-card">
+                            <div class="item-photo">
+                                <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="เครื่องดนตรีพื้นบ้าน">
+                            </div>
+                            <div class="item-info">
+                                <h4>เครื่องดนตรีพื้นบ้าน</h4>
+                                <div class="item-location">ทั่วทั้งจังหวัด</div>
+                                <div class="item-description">โปงลาง แคน พิณ เอกลักษณ์ดนตรีอีสาน</div>
+                            </div>
+                        </div>
+                        
+                        <div class="cultural-item-card">
+                            <div class="item-photo">
+                                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="อาหารท้องถิ่น">
+                            </div>
+                            <div class="item-info">
+                                <h4>อาหารท้องถิ่น</h4>
+                                <div class="item-location">ตลาดเมืองสกลนคร</div>
+                                <div class="item-description">ส้มตำลาว แจ่วฮ้อน แกงอ่อม</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>ข้อมูลจังหวัดสกลนคร</h2>
+                        
+                        <p>สกลนคร หรือ "เมืองหนองหานหลวง" เป็นจังหวัดในภาคอีสานตอนบนของประเทศไทย มีประวัติศาสตร์ยาวนานกว่า 1,400 ปี เดิมเป็นที่ตั้งของอาณาจักรศรีโคตรบูร</p>
+                        
+                        <p>จังหวัดมีพื้นที่ 9,605 ตารางกิโลเมตร ประชากรประมาณ 1.1 ล้านคน เป็นศูนย์กลางด้านการศึกษาและวัฒนธรรมของอีสานตอนบน มีสถานที่ท่องเที่ยวทางธรรมชาติและวัฒนธรรมที่โดดเด่น</p>
+                        
+                        <div class="about-features">
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>อำเภอ: 18 อำเภอ</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>ประชากร: ~1.1 ล้านคน</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>พื้นที่: 9,605 ตร.กม.</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>ดอกไม้ประจำจังหวัด: ดอกลีลาวดี</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="culture-image" data-animate="right">
-                        <img src="https://images.unsplash.com/photo-1562778612-e1e0cda9915c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="วัฒนธรรมสกลนคร">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="ภูมิประเทศสกลนคร">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section class="gallery" id="gallery-section">
+        <!-- Destinations Section -->
+        <section class="destinations" id="destinations-section">
             <div class="container">
                 <div class="section-title">
-                    <h2>แกลเลอรี่ภาพสกลนคร</h2>
-                    <p>ภาพความงามอันน่าประทับใจจากทั่วจังหวัดสกลนคร</p>
+                    <h2>จุดเช็คอินแนะนำ</h2>
+                    
+                    <p>สถานที่ถ่ายรูปสวยและกิจกรรมน่าสนใจในสกลนคร</p>
+                </div>
+                
+                <div class="destinations-grid">
+                    <div class="destination-card">
+                        <div class="destination-header">
+                            <h3 class="destination-title">ภูพาน</h3>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> อำเภอภูพาน</span>
+                                <span><i class="fas fa-clock"></i> เปิด 8.00-17.00 น.</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <ul class="destination-details">
+                                <li><i class="fas fa-mountain"></i> <strong>ประเภท:</strong> อุทยานแห่งชาติ</li>
+                                <li><i class="fas fa-tree"></i> <strong>ไฮไลท์:</strong> จุดชมวิว ผาหิน ลำธารน้ำตก</li>
+                                <li><i class="fas fa-hiking"></i> <strong>กิจกรรม:</strong> เดินป่า พักแรม ชมธรรมชาติ</li>
+                                <li><i class="fas fa-clock"></i> <strong>เวลาแนะนำ:</strong> ตลอดทั้งปี</li>
+                            </ul>
+                            <a href="#destinations" class="visit-button nav-link" data-page="destinations">ดูรายละเอียด</a>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <div class="destination-header">
+                            <h3 class="destination-title">ถ้ำพระเวทย์</h3>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> อำเภอโคกศรีสุพรรณ</span>
+                                <span><i class="fas fa-clock"></i> เปิด 8.00-16.30 น.</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <ul class="destination-details">
+                                <li><i class="fas fa-mountain"></i> <strong>ประเภท:</strong> ถ้ำและศาสนสถาน</li>
+                                <li><i class="fas fa-tree"></i> <strong>ไฮไลท์:</strong> ถ้ำโบราณ รอยพระพุทธบาท</li>
+                                <li><i class="fas fa-hiking"></i> <strong>กิจกรรม:</strong> ไหว้พระ ชมถ้ำ ถ่ายรูป</li>
+                                <li><i class="fas fa-clock"></i> <strong>เวลาแนะนำ:</strong> ตลอดทั้งปี</li>
+                            </ul>
+                            <a href="#destinations" class="visit-button nav-link" data-page="destinations">ดูรายละเอียด</a>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <div class="destination-header">
+                            <h3 class="destination-title">สวนสัตว์เปิดสกลนคร</h3>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> อำเภอเมืองสกลนคร</span>
+                                <span><i class="fas fa-clock"></i> เปิด 8.00-18.00 น.</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <ul class="destination-details">
+                                <li><i class="fas fa-paw"></i> <strong>ประเภท:</strong> สวนสัตว์และสถานที่พักผ่อน</li>
+                                <li><i class="fas fa-tree"></i> <strong>ไฮไลท์:</strong> สัตว์ป่านานาชนิด สวนน้ำ</li>
+                                <li><i class="fas fa-hiking"></i> <strong>กิจกรรม:</strong> ชมสัตว์ ปิกนิก พักผ่อน</li>
+                                <li><i class="fas fa-clock"></i> <strong>เวลาแนะนำ:</strong> ตลอดทั้งปี</li>
+                            </ul>
+                            <a href="#destinations" class="visit-button nav-link" data-page="destinations">ดูรายละเอียด</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="view-all">
+                    <a href="#destinations" class="cta-button nav-link" data-page="destinations">ดูสถานที่ท่องเที่ยวทั้งหมด</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gallery Section -->
+        <section class="gallery">
+            <div class="container">
+                <div class="section-title">
+                    <h2>ภาพบรรยากาศสกลนคร</h2>
+                    <p>สัมผัสความงดงามผ่านภาพถ่ายสถานที่ท่องเที่ยวในสกลนคร</p>
                 </div>
                 
                 <div class="gallery-grid">
-                    <div class="gallery-item" data-animate="up">
-                        <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="วิวธรรมชาติสกลนคร">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1605369629633-b7d6c4d6f6c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ทะเลสาบหนองหาน">
                         <div class="gallery-overlay">
-                            <h4>ธรรมชาติสกลนคร</h4>
+                            <h4>ทะเลสาบหนองหาน</h4>
+                            <p>พระอาทิตย์ตกดินที่สวยที่สุด</p>
                         </div>
                     </div>
                     
-                    <div class="gallery-item" data-animate="up" data-delay="0.1">
-                        <img src="https://images.unsplash.com/photo-1562778612-e1e0cda9915c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="วัฒนธรรมสกลนคร">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="พระธาตุภูเพ็ก">
                         <div class="gallery-overlay">
-                            <h4>วัฒนธรรมพื้นบ้าน</h4>
+                            <h4>พระธาตุภูเพ็ก</h4>
+                            <p>โบราณสถานศักดิ์สิทธิ์</p>
                         </div>
                     </div>
                     
-                    <div class="gallery-item" data-animate="up" data-delay="0.2">
-                        <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="สถาปัตยกรรมสกลนคร">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="วัดพระธาตุเชิงชุม">
                         <div class="gallery-overlay">
-                            <h4>สถาปัตยกรรมท้องถิ่น</h4>
+                            <h4>วัดพระธาตุเชิงชุม</h4>
+                            <p>ศูนย์รวมจิตใจชาวสกลนคร</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Activities Section -->
-        <section class="activities" id="activities-section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>กิจกรรมแนะนำ</h2>
-                    <p>พบกับกิจกรรมท่องเที่ยวที่หลากหลายในจังหวัดสกลนคร</p>
-                </div>
-                
-                <div class="activities-grid">
-                    <div class="activity-card" data-animate="up">
-                        <div class="activity-icon">
-                            <i class="fas fa-hiking"></i>
-                        </div>
-                        <h3>เดินป่าศึกษาธรรมชาติ</h3>
-                        <p>สำรวจเส้นทางเดินป่าในอุทยานแห่งชาติภูพาน ชมความหลากหลายทางชีวภาพและวิวทิวทัศน์อันสวยงาม</p>
-                    </div>
-                    
-                    <div class="activity-card" data-animate="up" data-delay="0.1">
-                        <div class="activity-icon">
-                            <i class="fas fa-water"></i>
-                        </div>
-                        <h3>ล่องเรือชมหนองหาร</h3>
-                        <p>ล่องเรือชมทัศนียภาพของหนองหารหลวง แหล่งน้ำธรรมชาติที่ใหญ่ที่สุดในภาคอีสาน</p>
-                    </div>
-                    
-                    <div class="activity-card" data-animate="up" data-delay="0.2">
-                        <div class="activity-icon">
-                            <i class="fas fa-archway"></i>
-                        </div>
-                        <h3>ไหว้พระทำบุญ</h3>
-                        <p>สักการะพระธาตุศักดิ์สิทธิ์คู่เมืองสกลนคร ทั้งพระธาตุเชิงชุมและพระธาตุนารายณ์เจงเวง</p>
                     </div>
                 </div>
             </div>
@@ -1335,56 +1576,187 @@ function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c
     <section id="attractions" class="page">
         <div class="page-header">
             <div class="container">
-                <h1>สถานที่ท่องเที่ยวทั้งหมด</h1>
-                <p>ค้นพบสถานที่ท่องเที่ยวที่น่าสนใจในจังหวัดสกลนคร</p>
+                <h1>สถานที่ท่องเที่ยว</h1>
+                
+                <p>สำรวจแหล่งท่องเที่ยวทางธรรมชาติและวัฒนธรรมในสกลนคร</p>
             </div>
         </div>
         
         <div class="page-content">
             <div class="container">
                 <div class="attractions-grid">
-                    <!-- Additional attraction cards for the attractions page -->
-                    <div class="attraction-card" data-animate="left">
+                    <div class="attraction-card">
                         <div class="attraction-image">
-                            <div class="attraction-badge">ธรรมชาติ</div>
-                            <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="น้ำตกปรีชาสุขสวัสดิ์">
+                            <img src="https://images.unsplash.com/photo-1605369629633-b7d6c4d6f6c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ทะเลสาบหนองหาน">
                         </div>
                         <div class="attraction-content">
-                            <h3>น้ำตกปรีชาสุขสวัสดิ์</h3>
-                            <p>น้ำตกขนาดใหญ่ในอุทยานแห่งชาติภูพาน มีทั้งหมด 3 ชั้น น้ำไหลตลอดปี สภาพแวดล้อมร่มรื่นด้วยป่าไม้เบญจพรรณ</p>
-                            <div class="attraction-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> อำเภอภูพาน</span>
-                                <span><i class="fas fa-clock"></i> เปิดทุกวัน 8.00-17.00 น.</span>
-                            </div>
+                            <h3>ทะเลสาบหนองหาน</h3>
+                            
+                            <p>ทะเลสาบน้ำจืดขนาดใหญ่ที่สุดในภาคอีสาน มีทัศนียภาพสวยงาม พร้อมกิจกรรมนั่งเรือชมวิว ตกปลา และชมพระอาทิตย์ตกดินที่สวยที่สุดแห่งหนึ่งในประเทศไทย</p>
+                            
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>กิจกรรมนั่งเรือชมทัศนียภาพ</li>
+                                <li>จุดชมพระอาทิตย์ตกดิน</li>
+                                <li>ตกปลากระพงขาวและปลานิล</li>
+                                <li>ร้านอาหารริมน้ำ</li>
+                            </ul>
                         </div>
                     </div>
                     
-                    <div class="attraction-card" data-animate="right">
+                    <div class="attraction-card">
                         <div class="attraction-image">
-                            <div class="attraction-badge">วัฒนธรรม</div>
-                            <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="พิพิธภัณฑ์เมืองสกลนคร">
+                            <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="พระธาตุภูเพ็ก">
                         </div>
                         <div class="attraction-content">
-                            <h3>พิพิธภัณฑ์เมืองสกลนคร</h3>
-                            <p>สถานที่รวบรวมเรื่องราวประวัติศาสตร์ วัฒนธรรม และวิถีชีวิตของชาวสกลนครในอดีตจนถึงปัจจุบัน</p>
-                            <div class="attraction-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> ตัวเมืองสกลนคร</span>
-                                <span><i class="fas fa-clock"></i> อังคาร-อาทิตย์ 9.00-16.00 น.</span>
-                            </div>
+                            <h3>พระธาตุภูเพ็ก</h3>
+                            
+                            <p>โบราณสถานสำคัญอายุมากกว่า 1,000 ปี ตั้งอยู่บนยอดเขาสูง สร้างด้วยหินทรายสีแดงชมพู มีรอยพระพุทธบาทประดิษฐานอยู่บนยอดเขา</p>
+                            
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>โบราณสถานศักดิ์สิทธิ์</li>
+                                <li>จุดชมวิวมุมสูง</li>
+                                <li>เส้นทางเดินป่า</li>
+                                <li>รอยพระพุทธบาท</li>
+                            </ul>
                         </div>
                     </div>
                     
-                    <div class="attraction-card" data-animate="left">
+                    <div class="attraction-card">
                         <div class="attraction-image">
-                            <div class="attraction-badge">ธรรมชาติ</div>
-                            <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="สวนสมเด็จพระศรีนครินทร์">
+                            <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="วัดพระธาตุเชิงชุม">
                         </div>
                         <div class="attraction-content">
-                            <h3>สวนสมเด็จพระศรีนครินทร์</h3>
-                            <p>สวนสาธารณะขนาดใหญ่ริมหนองหารหลวง เหมาะสำหรับการพักผ่อน ออกกำลังกาย และชมวิวทะเลสาบ</p>
-                            <div class="attraction-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> ตัวเมืองสกลนคร</span>
-                                <span><i class="fas fa-clock"></i> เปิดตลอด 24 ชั่วโมง</span>
+                            <h3>วัดพระธาตุเชิงชุม</h3>
+                            
+                            <p>วัดคู่บ้านคู่เมืองสกลนคร ประดิษฐานหลวงพ่อพระองค์แสน พระพุทธรูปศักดิ์สิทธิ์ที่ชาวสกลนครให้ความเคารพนับถือมากว่า 300 ปี</p>
+                            
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>หลวงพ่อพระองค์แสน</li>
+                                <li>สถาปัตยกรรมล้านช้าง</li>
+                                <li>พิพิธภัณฑ์พื้นบ้าน</li>
+                                <li>งานประเพณีสำคัญ</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="attraction-card">
+                        <div class="attraction-image">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="อุทยานแห่งชาติภูพาน">
+                        </div>
+                        <div class="attraction-content">
+                            <h3>อุทยานแห่งชาติภูพาน</h3>
+                            
+                            <p>อุทยานแห่งชาติที่มีธรรมชาติสมบูรณ์ อากาศเย็นสบายตลอดปี มีจุดชมวิว ผาหิน ลำธารน้ำตก และเส้นทางเดินป่าที่สวยงาม</p>
+                            
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>จุดชมวิวผาหิน</li>
+                                <li>น้ำตกต่าง ๆ</li>
+                                <li>เส้นทางเดินป่า</li>
+                                <li>ที่พักและกางเต็นท์</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="attraction-card">
+                        <div class="attraction-image">
+                            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ถ้ำพระเวทย์">
+                        </div>
+                        <div class="attraction-content">
+                            <h3>ถ้ำพระเวทย์</h3>
+                            
+                            <p>ถ้ำโบราณที่มีความสำคัญทางประวัติศาสตร์และศาสนา ภายในมีหินงอกหินย้อยที่สวยงาม และรอยพระพุทธบาทศักดิ์สิทธิ์</p>
+                            
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>ถ้ำโบราณศักดิ์สิทธิ์</li>
+                                <li>หินงอกหินย้อย</li>
+                                <li>รอยพระพุทธบาท</li>
+                                <li>จุดชมวิวรอบบริเวณ</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="attraction-card">
+                        <div class="attraction-image">
+                            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="สวนสัตว์เปิดสกลนคร">
+                        </div>
+                        <div class="attraction-content">
+                            <h3>สวนสัตว์เปิดสกลนคร</h3>
+                            
+                            <p>สวนสัตว์เปิดขนาดใหญ่ที่มีสัตว์ป่านานาชนิดให้ชม รวมถึงมีสวนน้ำและพื้นที่พักผ่อนสำหรับครอบครัว</p>
+                            
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>สัตว์ป่านานาชนิด</li>
+                                <li>สวนน้ำและพื้นที่พักผ่อน</li>
+                                <li>กิจกรรมสำหรับเด็ก</li>
+                                <li>ร้านอาหารและของที่ระลึก</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 60px; background-color: #f0f9ff; padding: 30px; border-radius: var(--radius);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 15px;">แผนที่สถานที่ท่องเที่ยวในสกลนคร</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                        <div style="text-align: center;">
+                            <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">1</div>
+                            <h4>ภาคเหนือของจังหวัด</h4>
+                            <p>พระธาตุภูเพ็ก, อุทยานภูพาน</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">2</div>
+                            <h4>ใจกลางเมือง</h4>
+                            <p>วัดพระธาตุเชิงชุม, สวนสัตว์เปิด</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">3</div>
+                            <h4>ภาคตะวันออก</h4>
+                            <p>ทะเลสาบหนองหาน, ถ้ำพระเวทย์</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">4</div>
+                            <h4>ภาคใต้ของจังหวัด</h4>
+                            <p>แหล่งวัฒนธรรม, หมู่บ้านหัตถกรรม</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 60px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px; text-align: center;">ภาพบรรยากาศสถานที่ท่องเที่ยว</h3>
+                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1605369629633-b7d6c4d6f6c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ทะเลสาบหนองหาน">
+                            <div class="gallery-overlay">
+                                <h4>ทะเลสาบหนองหาน</h4>
+                                <p>พระอาทิตย์ตกดินที่สวยที่สุด</p>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="พระธาตุภูเพ็ก">
+                            <div class="gallery-overlay">
+                                <h4>พระธาตุภูเพ็ก</h4>
+                                <p>โบราณสถานศักดิ์สิทธิ์</p>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="วัดพระธาตุเชิงชุม">
+                            <div class="gallery-overlay">
+                                <h4>วัดพระธาตุเชิงชุม</h4>
+                                <p>ศูนย์รวมจิตใจชาวสกลนคร</p>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="อุทยานภูพาน">
+                            <div class="gallery-overlay">
+                                <h4>อุทยานภูพาน</h4>
+                                <p>ธรรมชาติที่สมบูรณ์</p>
                             </div>
                         </div>
                     </div>
@@ -1393,91 +1765,338 @@ function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c
         </div>
     </section>
 
-    <!-- Culture Page -->
-    <section id="culture" class="page">
+    <!-- About Page -->
+    <section id="about" class="page">
         <div class="page-header">
             <div class="container">
-                <h1>วัฒนธรรมและประเพณี</h1>
-                <p>เรียนรู้เกี่ยวกับวัฒนธรรมอันหลากหลายของจังหวัดสกลนคร</p>
+                <h1>เกี่ยวกับจังหวัดสกลนคร</h1>
+                
+                <p>รู้จักเมืองหนองหานหลวงมากขึ้น</p>
             </div>
         </div>
         
         <div class="page-content">
             <div class="container">
-                <div class="culture-container">
-                    <div class="culture-content" data-animate="left">
-                        <h2>วัฒนธรรมล้านช้างในสกลนคร</h2>
-                        <p>จังหวัดสกลนครมีวัฒนธรรมล้านช้างที่ยังคงสืบทอดมาอย่างยาวนาน ปรากฏให้เห็นผ่านภาษา ประเพณี ความเชื่อ ศิลปะการแสดง และวิถีชีวิตของชาวบ้าน</p>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>ประวัติศาสตร์สกลนคร</h2>
                         
-                        <h3 style="margin-top: 30px;">กลุ่มชาติพันธุ์ในสกลนคร</h3>
+                        <p>สกลนคร หรือเดิมเรียกว่า "เมืองหนองหานหลวง" มีประวัติศาสตร์ยาวนานกว่า 1,400 ปี เคยเป็นศูนย์กลางของอาณาจักรศรีโคตรบูร ซึ่งมีความเจริญรุ่งเรืองด้านศิลปวัฒนธรรม</p>
+                        
+                        <p>ในสมัยกรุงศรีอยุธยา สกลนครเป็นเมืองหน้าด่านสำคัญของล้านช้าง ต่อมาในสมัยรัตนโกสินทร์ พระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัวได้ทรงพระกรุณาโปรดเกล้าฯ ยกฐานะขึ้นเป็น "เมืองสกลนคร" เมื่อปี พ.ศ. 2436</p>
+                        
+                        <h2 style="margin-top: 30px;">ที่มาของชื่อ "สกลนคร"</h2>
+                        
+                        <p>"สกลนคร" มาจากคำว่า "สกล" ในภาษาสันสกฤต แปลว่า ทั้งหมด หรือทั้งหมดพร้อมกัน และ "นคร" แปลว่า เมือง รวมกันหมายถึง "เมืองแห่งความสมบูรณ์พร้อม"</p>
+                        
+                        <h2 style="margin-top: 30px;">ข้อมูลทั่วไป</h2>
+                        
                         <ul style="margin-left: 20px; margin-bottom: 20px;">
-                            <li><strong>ไทยอีสาน</strong> - กลุ่มชาติพันธุ์หลักของจังหวัด</li>
-                            <li><strong>ไทยวน (โยนก)</strong> - อพยพมาจากล้านนา</li>
-                            <li><strong>ภูไท (ผู้ไทย)</strong> - มีวัฒนธรรมการแต่งกายเป็นเอกลักษณ์</li>
-                            <li><strong>ไทโส้</strong> - กลุ่มชาติพันธุ์ดั้งเดิมของอีสาน</li>
-                            <li><strong>ไทยกะเลิง</strong> - กลุ่มชาติพันธุ์ที่มีภาษาพูดเป็นของตัวเอง</li>
+                            <li><strong>ที่ตั้ง:</strong> ภาคตะวันออกเฉียงเหนือตอนบน</li>
+                            <li><strong>พื้นที่:</strong> 9,605 ตารางกิโลเมตร</li>
+                            <li><strong>ประชากร:</strong> ประมาณ 1.1 ล้านคน</li>
+                            <li><strong>ภูมิอากาศ:</strong> แบ่งเป็น 3 ฤดู (ร้อน ฝน หนาว)</li>
+                            <li><strong>ผลิตภัณฑ์มวลรวมจังหวัด (GDP):</strong> 85,000 ล้านบาท</li>
+                            <li><strong>อาชีพหลัก:</strong> เกษตรกรรม การค้า การท่องเที่ยว</li>
                         </ul>
                     </div>
                     
-                    <div class="culture-image" data-animate="right">
-                        <img src="https://images.unsplash.com/photo-1562778612-e1e0cda9915c?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80" alt="วัฒนธรรมล้านช้าง">
+                    <div class="about-image">
+                        <div style="width: 100%; height: 100%; background-color: #f0f9ff; display: flex; align-items: center; justify-content: center; color: var(--gray-color); padding: 30px;">
+                            <div style="text-align: center;">
+                                <i class="fas fa-landmark" style="font-size: 4rem; margin-bottom: 20px; color: var(--primary-color);"></i>
+                                <h3>ข้อมูลจังหวัดสกลนคร</h3>
+                                
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                                    <div>
+                                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">18</div>
+                                        <div>อำเภอ</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">1.1 ล.</div>
+                                        <div>ประชากร</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);>9,605</div>
+                                        <div>ตร.กม.</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);>1,400+</div>
+                                        <div>ปี ประวัติศาสตร์</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 60px;">
+                    <h2 style="text-align: center; margin-bottom: 40px;">อำเภอสำคัญในสกลนคร</h2>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin: 0 auto 20px; border: 3px solid var(--primary-color);">
+                                <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="อำเภอเมืองสกลนคร" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <h3>อำเภอเมืองสกลนคร</h3>
+                            <p style="color: var(--primary-color); font-weight: 500;">ศูนย์กลางการปกครอง</p>
+                            
+                            <p>ที่ตั้งศาลากลางจังหวัดและสถานที่ท่องเที่ยวสำคัญมากมาย</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin: 0 auto 20px; border: 3px solid var(--primary-color);">
+                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="อำเภอภูพาน" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <h3>อำเภอภูพาน</h3>
+                            <p style="color: var(--primary-color); font-weight: 500;">แหล่งธรรมชาติ</p>
+                            
+                            <p>มีอุทยานแห่งชาติภูพานและจุดชมวิวที่สวยงาม</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin: 0 auto 20px; border: 3px solid var(--primary-color);">
+                                <img src="https://images.unsplash.com/photo-1605369629633-b7d6c4d6f6c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="อำเภอเมืองหนองหาน" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <h3>อำเภอเมืองหนองหาน</h3>
+                            <p style="color: var(--primary-color); font-weight: 500;">แหล่งประวัติศาสตร์</p>
+                            
+                            <p>มีทะเลสาบหนองหานและชุมชนวัฒนธรรมโบราณ</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 60px;">
+                    <h2 style="text-align: center; margin-bottom: 30px;">สัญลักษณ์และความหมาย</h2>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <div style="border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);">
+                            <div style="height: 200px; background-color: #e0f2fe; display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                                <div style="text-align: center;">
+                                    <i class="fas fa-tree" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                                    <h4>ดอกไม้ประจำจังหวัด</h4>
+                                    <p><strong>ดอกลีลาวดี</strong> - สื่อถึงความงดงามและความสง่างาม</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);">
+                            <div style="height: 200px; background-color: #e0f2fe; display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                                <div style="text-align: center;">
+                                    <i class="fas fa-fish" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                                    <h4>สัตว์น้ำประจำจังหวัด</h4>
+                                    <p><strong>ปลาเสือตอลายใหญ่</strong> - ปลาเฉพาะถิ่นในทะเลสาบหนองหาน</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);">
+                            <div style="height: 200px; background-color: #e0f2fe; display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                                <div style="text-align: center;">
+                                    <i class="fas fa-monument" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                                    <h4>อนุสาวรีย์สำคัญ</h4>
+                                    <p><strong>พระธาตุเชิงชุม</strong> - สัญลักษณ์ความศรัทธาของชาวสกลนคร</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Page -->
-    <section id="gallery" class="page">
+    <!-- Festivals Page -->
+    <section id="festivals" class="page">
         <div class="page-header">
             <div class="container">
-                <h1>แกลเลอรี่ภาพ</h1>
-                <p>ภาพความงามของจังหวัดสกลนครจากมุมมองต่างๆ</p>
+                <h1>ประเพณีและวัฒนธรรม</h1>
+                <p>สัมผัสเอกลักษณ์ทางวัฒนธรรมของชาวสกลนคร</p>
             </div>
         </div>
         
         <div class="page-content">
             <div class="container">
-                <div class="gallery-grid">
-                    <div class="gallery-item" data-animate="up">
-                        <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ธรรมชาติสกลนคร">
-                        <div class="gallery-overlay">
-                            <h4>ทิวทัศน์ธรรมชาติ</h4>
+                <div class="festivals-section">
+                    <div class="section-title">
+                        <h2>ประเพณีสำคัญของสกลนคร</h2>
+                        <p>งานบุญและเทศกาลที่สืบสานกันมาหลายชั่วอายุคน</p>
+                    </div>
+                    
+                    <div class="festivals-grid">
+                        <div class="festival-card">
+                            <div class="festival-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <h3>งานบุญบั้งไฟ</h3>
+                            <p>ประเพณีขอฝุ่นที่มีความตื่นตาตื่นใจด้วยการจุดบั้งไฟแข่งกันขึ้นสู่ฟ้า</p>
+                            <ul class="festival-list">
+                                <li><i class="fas fa-check"></i> จัดขึ้นในเดือนพฤษภาคมของทุกปี</li>
+                                <li><i class="fas fa-check"></i> แข่งขันการทำบั้งไฟและความสูง</li>
+                                <li><i class="fas fa-check"></i> มีขบวนแห่และแสดงวัฒนธรรมพื้นบ้าน</li>
+                                <li><i class="fas fa-check"></i> จุดประสงค์เพื่อขอฝนและความอุดมสมบูรณ์</li>
+                                <li><i class="fas fa-check"></i> สถานที่จัด: ทั่วทุกอำเภอในสกลนคร</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="festival-card">
+                            <div class="festival-icon">
+                                <i class="fas fa-place-of-worship"></i>
+                            </div>
+                            <h3>งานนมัสการพระธาตุเชิงชุม</h3>
+                            <p>งานบุญใหญ่ที่จัดขึ้นเพื่อสักการะองค์พระธาตุเชิงชุมและหลวงพ่อพระองค์แสน</p>
+                            <ul class="festival-list">
+                                <li><i class="fas fa-check"></i> จัดขึ้นในเดือนกุมภาพันธ์ของทุกปี</li>
+                                <li><i class="fas fa-check"></i> มีพิธีทางศาสนาและเวียนเทียน</li>
+                                <li><i class="fas fa-check"></i> การแสดงวัฒนธรรมพื้นบ้านรอบองค์พระธาตุ</li>
+                                <li><i class="fas fa-check"></i> ตลาดนัดสินค้าท้องถิ่นและอาหารพื้นบ้าน</li>
+                                <li><i class="fas fa-check"></i> สถานที่จัด: วัดพระธาตุเชิงชุม</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="festival-card">
+                            <div class="festival-icon">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <h3>ประเพณีบุญสงกรานต์</h3>
+                            <p>ประเพณีปีใหม่ไทยที่มีการรดน้ำดำหัวผู้ใหญ่และเล่นสาดน้ำกันอย่างสนุกสนาน</p>
+                            <ul class="festival-list">
+                                <li><i class="fas fa-check"></i> จัดขึ้นในเดือนเมษายนของทุกปี</li>
+                                <li><i class="fas fa-check"></i> มีขบวนแห่และเลือกนางสงกรานต์</li>
+                                <li><i class="fas fa-check"></i> การละเล่นพื้นบ้านและสาดน้ำ</li>
+                                <li><i class="fas fa-check"></i> พิธีรดน้ำดำหัวผู้สูงอายุ</li>
+                                <li><i class="fas fa-check"></i> สถานที่จัด: ทั่วทั้งจังหวัด</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="festival-card">
+                            <div class="festival-icon">
+                                <i class="fas fa-boat"></i>
+                            </div>
+                            <h3>ประเพณีลอยกระทง</h3>
+                            <p>ประเพณีขอขมาแม่น้ำและลอยความทุกข์โศกโรคภัยไปกับกระทง</p>
+                            <ul class="festival-list">
+                                <li><i class="fas fa-check"></i> จัดขึ้นในวันขึ้น 15 ค่ำ เดือน 12</li>
+                                <li><i class="fas fa-check"></i> ลอยกระทงที่ทะเลสาบหนองหาน</li>
+                                <li><i class="fas fa-check"></i> การประกวดกระทงและนางนพมาศ</li>
+                                <li><i class="fas fa-check"></i> มีมหรสพและการแสดงแสงสีเสียง</li>
+                                <li><i class="fas fa-check"></i> สถานที่จัด: ทะเลสาบหนองหาน</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="festival-card">
+                            <div class="festival-icon">
+                                <i class="fas fa-hands-praying"></i>
+                            </div>
+                            <h3>ประเพณีบุญผะเหวด</h3>
+                            <p>ประเพณีฟังเทศน์มหาชาติทั้ง 13 กัณฑ์ตลอดทั้งวันและคืน</p>
+                            <ul class="festival-list">
+                                <li><i class="fas fa-check"></i> จัดขึ้นหลังประเพณีบุญบั้งไฟ</li>
+                                <li><i class="fas fa-check"></i> ฟังเทศน์มหาชาติ 13 กัณฑ์</li>
+                                <li><i class="fas fa-check"></i> มีการทำบุญตักบาตรและถวายภัตตาหาร</li>
+                                <li><i class="fas fa-check"></i> สร้างกุศลด้วยการฟังธรรม</li>
+                                <li><i class="fas fa-check"></i> สถานที่จัด: วัดต่างๆ ทั่วจังหวัด</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="festival-card">
+                            <div class="festival-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3>เทศกาลอาหารพื้นบ้านสกลนคร</h3>
+                            <p>เทศกาลชิมอาหารพื้นบ้านและของดีเมืองสกลนคร</p>
+                            <ul class="festival-list">
+                                <li><i class="fas fa-check"></i> จัดขึ้นในเดือนธันวาคมของทุกปี</li>
+                                <li><i class="fas fa-check"></i> ชิมอาหารพื้นบ้านและของขึ้นชื่อ</li>
+                                <li><i class="fas fa-check"></i> การประกวดอาหารและแม่ครัว</li>
+                                <li><i class="fas fa-check"></i> ตลาดนัดสินค้า OTOP</li>
+                                <li><i class="fas fa-check"></i> สถานที่จัด: บริเวณศาลากลางจังหวัด</li>
+                            </ul>
                         </div>
                     </div>
                     
-                    <div class="gallery-item" data-animate="up" data-delay="0.1">
-                        <img src="https://images.unsplash.com/photo-1562778612-e1e0cda9915c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="วัฒนธรรม">
-                        <div class="gallery-overlay">
-                            <h4>วัฒนธรรมพื้นบ้าน</h4>
+                    <div style="margin-top: 60px; background-color: #f0f9ff; padding: 30px; border-radius: var(--radius);">
+                        <h3 style="color: var(--primary-color); margin-bottom: 20px; text-align: center;">ปฏิทินประเพณีสำคัญของสกลนคร</h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                            <div style="text-align: center;">
+                                <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">ม.ค.</div>
+                                <h4>มกราคม</h4>
+                                <p>งานวันเด็กแห่งชาติ</p>
+                                <p>กิจกรรมส่งเสริมการท่องเที่ยว</p>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">ก.พ.</div>
+                                <h4>กุมภาพันธ์</h4>
+                                <p>งานนมัสการพระธาตุเชิงชุม</p>
+                                <p>วันมาฆบูชา</p>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">เม.ย.</div>
+                                <h4>เมษายน</h4>
+                                <p>ประเพณีสงกรานต์</p>
+                                <p>เล่นสาดน้ำทั่วจังหวัด</p>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">พ.ค.</div>
+                                <h4>พฤษภาคม</h4>
+                                <p>ประเพณีบุญบั้งไฟ</p>
+                                <p>ขอฝุ่นสำหรับการเกษตร</p>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">พ.ย.</div>
+                                <h4>พฤศจิกายน</h4>
+                                <p>ประเพณีลอยกระทง</p>
+                                <p>ที่ทะเลสาบหนองหาน</p>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 15px; font-weight: bold;">ธ.ค.</div>
+                                <h4>ธันวาคม</h4>
+                                <p>เทศกาลอาหารพื้นบ้าน</p>
+                                <p>งานส่งท้ายปีเก่าต้อนรับปีใหม่</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="gallery-item" data-animate="up" data-delay="0.2">
-                        <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="สถาปัตยกรรม">
-                        <div class="gallery-overlay">
-                            <h4>สถาปัตยกรรมท้องถิ่น</h4>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item" data-animate="up" data-delay="0.3">
-                        <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="วิถีชีวิต">
-                        <div class="gallery-overlay">
-                            <h4>วิถีชีวิตชาวบ้าน</h4>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item" data-animate="up" data-delay="0.4">
-                        <img src="https://images.unsplash.com/photo-1562778612-e1e0cda9915c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ประเพณี">
-                        <div class="gallery-overlay">
-                            <h4>ประเพณีท้องถิ่น</h4>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item" data-animate="up" data-delay="0.5">
-                        <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="อาหารพื้นเมือง">
-                        <div class="gallery-overlay">
-                            <h4>อาหารพื้นเมือง</h4>
+                    <div style="margin-top: 60px;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 20px; text-align: center;">ภาพประเพณีวัฒนธรรม</h3>
+                        
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1547825407-12d434919a46?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ประเพณีบุญบั้งไฟ">
+                                <div class="gallery-overlay">
+                                    <h4>ประเพณีบุญบั้งไฟ</h4>
+                                    <p>ขอฝุ่นสำหรับการเกษตร</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="การแสดงพื้นบ้าน">
+                                <div class="gallery-overlay">
+                                    <h4>การแสดงพื้นบ้าน</h4>
+                                    <p>เซิ้งและรำวงอีสาน</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="อาหารพื้นบ้าน">
+                                <div class="gallery-overlay">
+                                    <h4>อาหารพื้นบ้าน</h4>
+                                    <p>ส้มตำลาวและแจ่วฮ้อน</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ผ้าทอพื้นเมือง">
+                                <div class="gallery-overlay">
+                                    <h4>ผ้าทอพื้นเมือง</h4>
+                                    <p>ลวดลายเอกลักษณ์ชาวไทโย้ย</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1485,167 +2104,359 @@ function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c
         </div>
     </section>
 
-    <!-- Activities Page -->
-    <section id="activities" class="page">
+    <!-- Destinations Page -->
+    <section id="destinations" class="page">
         <div class="page-header">
             <div class="container">
-                <h1>กิจกรรมท่องเที่ยว</h1>
-                <p>ค้นหากิจกรรมท่องเที่ยวที่เหมาะกับคุณในจังหวัดสกลนคร</p>
+                <h1>จุดเช็คอินแนะนำ</h1>
+                
+                <p>สถานที่ถ่ายรูปสวยและกิจกรรมน่าสนใจในสกลนคร</p>
             </div>
         </div>
         
         <div class="page-content">
             <div class="container">
-                <div class="activities-grid">
-                    <div class="activity-card" data-animate="up">
-                        <div class="activity-icon">
-                            <i class="fas fa-hiking"></i>
+                <div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                    <h2 style="margin-bottom: 0;">สถานที่ท่องเที่ยวทั้งหมด (12 สถานที่)</h2>
+                    
+                    <div style="display: flex; gap: 10px;">
+                        <select style="padding: 10px; border: 1px solid #cbd5e1; border-radius: var(--radius);">
+                            <option>เรียงตามความนิยม</option>
+                            <option>เรียงตามระยะทาง (ใกล้-ไกล)</option>
+                            <option>เรียงตามประเภท</option>
+                        </select>
+                        
+                        <input type="text" placeholder="ค้นหาสถานที่ท่องเที่ยว..." style="padding: 10px; border: 1px solid #cbd5e1; border-radius: var(--radius); min-width: 250px;">
+                    </div>
+                </div>
+                
+                <div class="destinations-grid">
+                    <!-- Destination cards from home page -->
+                    <div class="destination-card">
+                        <div class="destination-header">
+                            <h3 class="destination-title">ภูพาน</h3>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> อำเภอภูพาน</span>
+                                <span><i class="fas fa-clock"></i> เปิด 8.00-17.00 น.</span>
+                            </div>
                         </div>
-                        <h3>เดินป่าศึกษาธรรมชาติ</h3>
-                        <p>สำรวจเส้นทางเดินป่าในอุทยานแห่งชาติภูพาน ชมความหลากหลายทางชีวภาพและวิวทิวทัศน์อันสวยงาม</p>
+                        <div class="destination-content">
+                            <ul class="destination-details">
+                                <li><i class="fas fa-mountain"></i> <strong>ประเภท:</strong> อุทยานแห่งชาติ</li>
+                                <li><i class="fas fa-tree"></i> <strong>ไฮไลท์:</strong> จุดชมวิว ผาหิน ลำธารน้ำตก</li>
+                                <li><i class="fas fa-hiking"></i> <strong>กิจกรรม:</strong> เดินป่า พักแรม ชมธรรมชาติ</li>
+                                <li><i class="fas fa-clock"></i> <strong>เวลาแนะนำ:</strong> ตลอดทั้งปี</li>
+                            </ul>
+                            <a href="#contact" class="visit-button">สอบถามข้อมูล</a>
+                        </div>
                     </div>
                     
-                    <div class="activity-card" data-animate="up" data-delay="0.1">
-                        <div class="activity-icon">
-                            <i class="fas fa-water"></i>
+                    <div class="destination-card">
+                        <div class="destination-header">
+                            <h3 class="destination-title">ถ้ำพระเวทย์</h3>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> อำเภอโคกศรีสุพรรณ</span>
+                                <span><i class="fas fa-clock"></i> เปิด 8.00-16.30 น.</span>
+                            </div>
                         </div>
-                        <h3>ล่องเรือชมหนองหาร</h3>
-                        <p>ล่องเรือชมทัศนียภาพของหนองหารหลวง แหล่งน้ำธรรมชาติที่ใหญ่ที่สุดในภาคอีสาน</p>
+                        <div class="destination-content">
+                            <ul class="destination-details">
+                                <li><i class="fas fa-mountain"></i> <strong>ประเภท:</strong> ถ้ำและศาสนสถาน</li>
+                                <li><i class="fas fa-tree"></i> <strong>ไฮไลท์:</strong> ถ้ำโบราณ รอยพระพุทธบาท</li>
+                                <li><i class="fas fa-hiking"></i> <strong>กิจกรรม:</strong> ไหว้พระ ชมถ้ำ ถ่ายรูป</li>
+                                <li><i class="fas fa-clock"></i> <strong>เวลาแนะนำ:</strong> ตลอดทั้งปี</li>
+                            </ul>
+                            <a href="#contact" class="visit-button">สอบถามข้อมูล</a>
+                        </div>
                     </div>
                     
-                    <div class="activity-card" data-animate="up" data-delay="0.2">
-                        <div class="activity-icon">
-                            <i class="fas fa-archway"></i>
+                    <div class="destination-card">
+                        <div class="destination-header">
+                            <h3 class="destination-title">สวนสัตว์เปิดสกลนคร</h3>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> อำเภอเมืองสกลนคร</span>
+                                <span><i class="fas fa-clock"></i> เปิด 8.00-18.00 น.</span>
+                            </div>
                         </div>
-                        <h3>ไหว้พระทำบุญ</h3>
-                        <p>สักการะพระธาตุศักดิ์สิทธิ์คู่เมืองสกลนคร ทั้งพระธาตุเชิงชุมและพระธาตุนารายณ์เจงเวง</p>
+                        <div class="destination-content">
+                            <ul class="destination-details">
+                                <li><i class="fas fa-paw"></i> <strong>ประเภท:</strong> สวนสัตว์และสถานที่พักผ่อน</li>
+                                <li><i class="fas fa-tree"></i> <strong>ไฮไลท์:</strong> สัตว์ป่านานาชนิด สวนน้ำ</li>
+                                <li><i class="fas fa-hiking"></i> <strong>กิจกรรม:</strong> ชมสัตว์ ปิกนิก พักผ่อน</li>
+                                <li><i class="fas fa-clock"></i> <strong>เวลาแนะนำ:</strong> ตลอดทั้งปี</li>
+                            </ul>
+                            <a href="#contact" class="visit-button">สอบถามข้อมูล</a>
+                        </div>
                     </div>
                     
-                    <div class="activity-card" data-animate="up" data-delay="0.3">
-                        <div class="activity-icon">
-                            <i class="fas fa-camera"></i>
+                    <!-- Additional destination cards -->
+                    <div class="destination-card">
+                        <div class="destination-header">
+                            <h3 class="destination-title">พระธาตุดูนาดูน</h3>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> อำเภอนาดูน</span>
+                                <span><i class="fas fa-clock"></i> เปิด 6.00-18.00 น.</span>
+                            </div>
                         </div>
-                        <h3>ถ่ายภาพวิวธรรมชาติ</h3>
-                        <p>เก็บภาพความงามของธรรมชาติสกลนคร ทั้งทะเลหมอกบนภูพาน แสงแรกอาทิตย์และแสงสุดท้ายแห่งวัน</p>
+                        <div class="destination-content">
+                            <ul class="destination-details">
+                                <li><i class="fas fa-place-of-worship"></i> <strong>ประเภท:</strong> สถานที่ศักดิ์สิทธิ์</li>
+                                <li><i class="fas fa-tree"></i> <strong>ไฮไลท์:</strong> พระธาตุโบราณ สถาปัตยกรรมล้านช้าง</li>
+                                <li><i class="fas fa-hiking"></i> <strong>กิจกรรม:</strong> ไหว้พระ ชมสถาปัตยกรรม ถ่ายรูป</li>
+                                <li><i class="fas fa-clock"></i> <strong>เวลาแนะนำ:</strong> ตลอดทั้งปี</li>
+                            </ul>
+                            <a href="#contact" class="visit-button">สอบถามข้อมูล</a>
+                        </div>
                     </div>
                     
-                    <div class="activity-card" data-animate="up" data-delay="0.4">
-                        <div class="activity-icon">
+                    <div class="destination-card">
+                        <div class="destination-header">
+                            <h3 class="destination-title">พิพิธภัณฑ์อาจารย์ฝั้น อาจาโร</h3>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> อำเภอพรรณานิคม</span>
+                                <span><i class="fas fa-clock"></i> เปิด 8.30-16.30 น.</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <ul class="destination-details">
+                                <li><i class="fas fa-landmark"></i> <strong>ประเภท:</strong> พิพิธภัณฑ์และสถานที่ศึกษา</li>
+                                <li><i class="fas fa-tree"></i> <strong>ไฮไลท์:</strong> วัตถุโบราณ ประวัติศาสนา</li>
+                                <li><i class="fas fa-hiking"></i> <strong>กิจกรรม:</strong> ศึกษาประวัติศาสตร์ ไหว้พระ</li>
+                                <li><i class="fas fa-clock"></i> <strong>เวลาแนะนำ:</strong> ตลอดทั้งปี</li>
+                            </ul>
+                            <a href="#contact" class="visit-button">สอบถามข้อมูล</a>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <div class="destination-header">
+                            <h3 class="destination-title">วัดป่าอุดมสมพร</h3>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> อำเภอเมืองสกลนคร</span>
+                                <span><i class="fas fa-clock"></i> เปิด 6.00-18.00 น.</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <ul class="destination-details">
+                                <li><i class="fas fa-place-of-worship"></i> <strong>ประเภท:</strong> สถานที่ศักดิ์สิทธิ์</li>
+                                <li><i class="fas fa-tree"></i> <strong>ไฮไลท์:</strong> วัดป่า สวนป่า สงบร่มรื่น</li>
+                                <li><i class="fas fa-hiking"></i> <strong>กิจกรรม:</strong> วิปัสสนา ไหว้พระ พักผ่อน</li>
+                                <li><i class="fas fa-clock"></i> <strong>เวลาแนะนำ:</strong> ตลอดทั้งปี</li>
+                            </ul>
+                            <a href="#contact" class="visit-button">สอบถามข้อมูล</a>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <div class="destination-header">
+                            <h3 class="destination-title">ศูนย์ศึกษาธรรมชาติและสัตว์ป่าภูพาน</h3>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> อำเภอภูพาน</span>
+                                <span><i class="fas fa-clock"></i> เปิด 8.00-16.30 น.</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <ul class="destination-details">
+                                <li><i class="fas fa-tree"></i> <strong>ประเภท:</strong> ศูนย์ศึกษาและท่องเที่ยวธรรมชาติ</li>
+                                <li><i class="fas fa-tree"></i> <strong>ไฮไลท์:</strong> ศึกษาธรรมชาติ พืชพันธุ์ สัตว์ป่า</li>
+                                <li><i class="fas fa-hiking"></i> <strong>กิจกรรม:</strong> เดินป่า ศึกษาธรรมชาติ ถ่ายรูป</li>
+                                <li><i class="fas fa-clock"></i> <strong>เวลาแนะนำ:</strong> ตลอดทั้งปี</li>
+                            </ul>
+                            <a href="#contact" class="visit-button">สอบถามข้อมูล</a>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <div class="destination-header">
+                            <h3 class="destination-title">หมู่บ้านวัฒนธรรมไทโย้ย</h3>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> อำเภอโพนนาแก้ว</span>
+                                <span><i class="fas fa-clock"></i> เปิด 8.00-17.00 น.</span>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <ul class="destination-details">
+                                <li><i class="fas fa-home"></i> <strong>ประเภท:</strong> หมู่บ้านวัฒนธรรม</li>
+                                <li><i class="fas fa-tree"></i> <strong>ไฮไลท์:</strong> วิถีชีวิต วัฒนธรรม การทอผ้า</li>
+                                <li><i class="fas fa-hiking"></i> <strong>กิจกรรม:</strong> เรียนรู้วัฒนธรรม ซื้อของที่ระลึก</li>
+                                <li><i class="fas fa-clock"></i> <strong>เวลาแนะนำ:</strong> ตลอดทั้งปี</li>
+                            </ul>
+                            <a href="#contact" class="visit-button">สอบถามข้อมูล</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <button style="padding: 12px 30px; background-color: white; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: var(--radius); font-weight: 600; cursor: pointer;">
+                        <i class="fas fa-redo"></i> โหลดเพิ่มเติม
+                    </button>
+                </div>
+                
+                <div style="margin-top: 60px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px; text-align: center;">แผนที่สถานที่ท่องเที่ยวสำคัญ</h3>
+                    
+                    <div style="border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);">
+                        <div style="height: 300px; background-color: #e0f2fe; display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                            <div style="text-align: center;">
+                                <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                                <h4>แผนที่สถานที่ท่องเที่ยวจังหวัดสกลนคร</h4>
+                                <p>คลิกเพื่อดูรายละเอียดและเส้นทาง</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Page -->
+    <section id="food" class="page">
+        <div class="page-header">
+            <div class="container">
+                <h1>อาหารขึ้นชื่อสกลนคร</h1>
+                
+                <p>ลิ้มลองรสชาติอาหารอีสานเหนือที่ขึ้นชื่อของเมืองสกลนคร</p>
+            </div>
+        </div>
+        
+        <div class="page-content">
+            <div class="container">
+                <div class="food-container">
+                    <div class="food-info-card">
+                        <h3>อาหารขึ้นชื่อของสกลนคร</h3>
+                        
+                        <div class="food-detail">
                             <i class="fas fa-utensils"></i>
-                        </div>
-                        <h3>ลิ้มรสอาหารอีสาน</h3>
-                        <p>สัมผัสรสชาติอาหารอีสานแท้ๆ ทั้งส้มตำ ลาบ น้ำตก ปลาเผา และอาหารพื้นเมืองอื่นๆ</p>
-                    </div>
-                    
-                    <div class="activity-card" data-animate="up" data-delay="0.5">
-                        <div class="activity-icon">
-                            <i class="fas fa-shopping-bag"></i>
-                        </div>
-                        <h3>ช็อปปิ้งของที่ระลึก</h3>
-                        <p>เลือกซื้อของฝากของที่ระลึกจากสกลนคร ทั้งผ้าทอมือ เครื่องจักสาน ผลิตภัณฑ์ชุมชน</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Page -->
-    <section id="contact" class="page">
-        <div class="page-header">
-            <div class="container">
-                <h1>ติดต่อเรา</h1>
-                <p>สอบถามข้อมูลหรือขอคำแนะนำเกี่ยวกับการท่องเที่ยวสกลนคร</p>
-            </div>
-        </div>
-        
-        <div class="page-content">
-            <div class="container">
-                <div class="contact-container">
-                    <div class="contact-info" data-animate="left">
-                        <h3>ข้อมูลติดต่อ</h3>
-                        
-                        <div class="contact-detail">
-                            <i class="fas fa-phone-alt"></i>
                             <div>
-                                <h4>โทรศัพท์</h4>
-                                <p>042-711-111</p>
+                                <h4>ส้มตำลาว</h4>
+                                <p>ส้มตำสูตรลาวแท้ รสชาติจัดจ้านกว่าเดิม มีให้เลือกหลายแบบ ทั้งตำไทย ตำลาว ตำซั่ว</p>
                             </div>
                         </div>
                         
-                        <div class="contact-detail">
-                            <i class="fas fa-envelope"></i>
+                        <div class="food-detail">
+                            <i class="fas fa-drumstick-bite"></i>
                             <div>
-                                <h4>อีเมล</h4>
-                                <p>tourism@sakonnakhon.go.th</p>
+                                <h4>ไก่ย่างเมืองสกล</h4>
+                                <p>ไก่ย่างสูตรพิเศษ หมักด้วยสมุนไพรพื้นบ้าน หนังกรอบ เนื้อนุ่ม หอมเครื่องเทศ</p>
                             </div>
                         </div>
                         
-                        <div class="contact-detail">
-                            <i class="fas fa-map-marker-alt"></i>
+                        <div class="food-detail">
+                            <i class="fas fa-fish"></i>
                             <div>
-                                <h4>ที่อยู่</h4>
-                                <p>ศาลากลางจังหวัดสกลนคร ถนนเจริญเมือง อำเภอเมืองสกลนคร จังหวัดสกลนคร 47000</p>
+                                <h4>ปลาเผาแดดเดียว</h4>
+                                <p>ปลาน้ำจืดจากหนองหาน เนื้อหวานแน่น ทำเป็นปลาแดดเดียวและนำมาเผา</p>
                             </div>
                         </div>
                         
-                        <div class="contact-detail">
-                            <i class="fas fa-clock"></i>
+                        <div class="food-detail">
+                            <i class="fas fa-bowl-food"></i>
                             <div>
-                                <h4>เวลาทำการ</h4>
-                                <p>จันทร์ - ศุกร์: 8.30 น. - 16.30 น.<br>เสาร์ - อาทิตย์: 9.00 น. - 17.00 น.</p>
+                                <h4>แกงอ่อมเนื้อ</h4>
+                                <p>แกงพื้นบ้านรสจัดจ้าน ใส่เครื่องในวัวหรือเนื้อวัว เคี่ยวด้วยสมุนไพรอีสาน</p>
+                            </div>
+                        </div>
+                        
+                        <div class="food-detail">
+                            <i class="fas fa-ice-cream"></i>
+                            <div>
+                                <h4>ขนมจีนน้ำยาปลาร้า</h4>
+                                <p>ขนมจีนน้ำปลาร้าสูตรเด็ด รสชาติกลมกล่อม กินกับผักสดนานาชนิด</p>
                             </div>
                         </div>
                         
                         <div class="social-links">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-line"></i></a>
                             <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
                         </div>
                     </div>
                     
-                    <div class="contact-form" data-animate="right">
-                        <h3>สอบถามข้อมูลการท่องเที่ยว</h3>
+                    <div class="contact-form">
+                        <h3>แนะนำร้านอาหารและสอบถามข้อมูล</h3>
                         
                         <div class="form-success" id="formSuccess">
-                            <i class="fas fa-check-circle"></i> ขอบคุณที่ติดต่อเรา! เราได้รับข้อมูลของคุณแล้ว และจะติดต่อกลับในเร็วๆ นี้
+                            <i class="fas fa-check-circle"></i> ขอบคุณที่แนะนำร้านอาหาร! ข้อมูลของคุณมีค่าต่อการท่องเที่ยวสกลนคร
                         </div>
                         
-                        <form id="contactForm">
+                        <form id="foodForm">
                             <div class="form-group">
-                                <label for="name">ชื่อ-นามสกุล *</label>
-                                <input type="text" id="name" required>
+                                <label for="foodName">ชื่ออาหารหรือร้านอาหาร *</label>
+                                <input type="text" id="foodName" required>
                             </div>
                             
                             <div class="form-group">
-                                <label for="phone">เบอร์โทรศัพท์</label>
-                                <input type="tel" id="phone">
+                                <label for="foodLocation">ที่ตั้งร้านอาหาร *</label>
+                                <input type="text" id="foodLocation" required>
                             </div>
                             
                             <div class="form-group">
-                                <label for="email">อีเมล *</label>
-                                <input type="email" id="email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="purpose">หัวข้อที่ต้องการสอบถาม *</label>
-                                <select id="purpose" required>
-                                    <option value="">เลือกหัวข้อ</option>
-                                    <option value="attraction">ข้อมูลสถานที่ท่องเที่ยว</option>
-                                    <option value="accommodation">ที่พักและโรงแรม</option>
-                                    <option value="transport">การเดินทาง</option>
-                                    <option value="event">งานประเพณีและกิจกรรม</option>
+                                <label for="foodType">ประเภทอาหาร *</label>
+                                <select id="foodType" required>
+                                    <option value="">เลือกประเภทอาหาร</option>
+                                    <option value="local">อาหารพื้นบ้าน</option>
+                                    <option value="restaurant">ร้านอาหารทั่วไป</option>
+                                    <option value="street">อาหารริมทาง</option>
+                                    <option value="dessert">ของหวานและเครื่องดื่ม</option>
                                     <option value="other">อื่นๆ</option>
                                 </select>
                             </div>
                             
                             <div class="form-group">
-                                <label for="message">รายละเอียด *</label>
-                                <textarea id="message" rows="5" required></textarea>
+                                <label for="foodDescription">รายละเอียดอาหารหรือร้านอาหาร *</label>
+                                <textarea id="foodDescription" rows="5" required placeholder="เช่น รสชาติเป็นอย่างไร ราคาเท่าไร ฯลฯ"></textarea>
                             </div>
                             
-                            <button type="submit" class="submit-button">ส่งข้อความ</button>
+                            <div class="form-group">
+                                <label for="foodRating">ระดับความนิยม (1-5 ดาว)</label>
+                                <select id="foodRating">
+                                    <option value="5">★★★★★ ดีเยี่ยม</option>
+                                    <option value="4">★★★★ ดีมาก</option>
+                                    <option value="3">★★★ ปานกลาง</option>
+                                    <option value="2">★★ พอใช้</option>
+                                    <option value="1">★ ควรปรับปรุง</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="submit-button">ส่งข้อมูลแนะนำ</button>
                         </form>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 60px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px; text-align: center;">ร้านอาหารแนะนำในสกลนคร</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+                        <div style="border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ร้านส้มตำลาว" style="width: 100%; height: 200px; object-fit: cover;">
+                            <div style="padding: 15px; background-color: white;">
+                                <h4 style="color: var(--primary-color);">ร้านส้มตำลาวบ้านนาอ้อย</h4>
+                                <p><strong>ที่ตั้ง:</strong> อำเภอเมืองสกลนคร</p>
+                                <p><strong>เมนูแนะนำ:</strong> ส้มตำลาว, ไก่ย่าง, ปลาเผา</p>
+                                <p><strong>ราคา:</strong> 50-200 บาท</p>
+                            </div>
+                        </div>
+                        
+                        <div style="border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ร้านแกงอ่อมเจ้จู" style="width: 100%; height: 200px; object-fit: cover;">
+                            <div style="padding: 15px; background-color: white;">
+                                <h4 style="color: var(--primary-color);">ร้านแกงอ่อมเจ้จู</h4>
+                                <p><strong>ที่ตั้ง:</strong> อำเภอเมืองสกลนคร</p>
+                                <p><strong>เมนูแนะนำ:</strong> แกงอ่อมเนื้อ, ลาบ, ก้อย</p>
+                                <p><strong>ราคา:</strong> 80-250 บาท</p>
+                            </div>
+                        </div>
+                        
+                        <div style="border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ตลาดกลางคืนสกลนคร" style="width: 100%; height: 200px; object-fit: cover;">
+                            <div style="padding: 15px; background-color: white;">
+                                <h4 style="color: var(--primary-color);">ตลาดกลางคืนสกลนคร</h4>
+                                <p><strong>ที่ตั้ง:</strong> หน้าศาลากลางจังหวัด</p>
+                                <p><strong>เมนูแนะนำ:</strong> อาหารตามสั่ง, ของว่าง, ผลไม้</p>
+                                <p><strong>ราคา:</strong> 20-100 บาท</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1657,12 +2468,12 @@ function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c
         <div class="container">
             <div class="footer-container">
                 <div class="footer-column">
-                    <h3>สกลนคร</h3>
-                    <p>จังหวัดสกลนคร ดินแดนแห่งวัฒนธรรมล้านช้างและธรรมชาติที่งดงาม เมืองแห่งหนองหารหลวงและพระธาตุเชิงชุม</p>
+                    <h3>สกลนครท่องเที่ยว</h3>
+                    <p>ศูนย์รวมข้อมูลการท่องเที่ยวจังหวัดสกลนคร ทั้งสถานที่ท่องเที่ยว วัฒนธรรม อาหาร และที่พัก เพื่อประสบการณ์ท่องเที่ยวที่สมบูรณ์แบบ</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-line"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
@@ -1670,10 +2481,10 @@ function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c
                 <div class="footer-column">
                     <h3>สถานที่ท่องเที่ยว</h3>
                     <ul class="footer-links">
-                        <li><a href="#attractions" class="nav-link" data-page="attractions">อุทยานแห่งชาติภูพาน</a></li>
-                        <li><a href="#attractions" class="nav-link" data-page="attractions">พระธาตุเชิงชุมวรวิหาร</a></li>
-                        <li><a href="#attractions" class="nav-link" data-page="attractions">หนองหารหลวง</a></li>
-                        <li><a href="#attractions" class="nav-link" data-page="attractions">น้ำตกปรีชาสุขสวัสดิ์</a></li>
+                        <li><a href="#attractions" class="nav-link" data-page="attractions">ทะเลสาบหนองหาน</a></li>
+                        <li><a href="#attractions" class="nav-link" data-page="attractions">พระธาตุภูเพ็ก</a></li>
+                        <li><a href="#attractions" class="nav-link" data-page="attractions">วัดพระธาตุเชิงชุม</a></li>
+                        <li><a href="#destinations" class="nav-link" data-page="destinations">อุทยานแห่งชาติภูพาน</a></li>
                     </ul>
                 </div>
                 
@@ -1681,27 +2492,27 @@ function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c
                     <h3>ลิงก์ด่วน</h3>
                     <ul class="footer-links">
                         <li><a href="#home" class="nav-link" data-page="home">หน้าแรก</a></li>
-                        <li><a href="#attractions" class="nav-link" data-page="attractions">สถานที่ท่องเที่ยว</a></li>
-                        <li><a href="#culture" class="nav-link" data-page="culture">วัฒนธรรม</a></li>
-                        <li><a href="#gallery" class="nav-link" data-page="gallery">แกลเลอรี่</a></li>
-                        <li><a href="#activities" class="nav-link" data-page="activities">กิจกรรม</a></li>
-                        <li><a href="#contact" class="nav-link" data-page="contact">ติดต่อ</a></li>
+                        <li><a href="#about" class="nav-link" data-page="about">เกี่ยวกับจังหวัด</a></li>
+                        <li><a href="#festivals" class="nav-link" data-page="festivals">ประเพณีและวัฒนธรรม</a></li>
+                        <li><a href="#destinations" class="nav-link" data-page="destinations">จุดเช็คอินแนะนำ</a></li>
+                        <li><a href="#food" class="nav-link" data-page="food">อาหารขึ้นชื่อ</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>ข้อมูลติดต่อ</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-phone-alt"></i> 042-711-111</li>
-                        <li><i class="fas fa-envelope"></i> tourism@sakonnakhon.go.th</li>
-                        <li><i class="fas fa-map-marker-alt"></i> ศาลากลางจังหวัดสกลนคร</li>
-                        <li><i class="fas fa-clock"></i> จันทร์-ศุกร์ 8.30-16.30 น.</li>
+                        <li><i class="fas fa-phone-alt"></i> 042-740888</li>
+                        <li><i class="fas fa-envelope"></i> TourismSakon@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> สกลนคร, ประเทศไทย</li>
+                        <li><i class="fas fa-clock"></i> ให้บริการข้อมูล 24/7</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2024 การท่องเที่ยวจังหวัดสกลนคร. สงวนลิขสิทธิ์</p>
+                <p>&copy; 2024 Sakon Nakhon Tourism. สงวนลิขสิทธิ์</p>
+                <p>เว็บไซต์นี้จัดทำขึ้นเพื่อส่งเสริมการท่องเที่ยวจังหวัดสกลนคร</p>
             </div>
         </div>
     </footer>
@@ -1749,41 +2560,35 @@ function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c
                 
                 // Scroll to top
                 window.scrollTo(0, 0);
-                
-                // Trigger animations on new page
-                setTimeout(() => {
-                    initAnimations();
-                }, 100);
             });
         });
         
-        // Contact Form Submission
-        const contactForm = document.getElementById('contactForm');
+        // Food Form Submission
+        const foodForm = document.getElementById('foodForm');
         const formSuccess = document.getElementById('formSuccess');
         
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                // Show success message
-                formSuccess.classList.add('active');
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Scroll to success message
-                formSuccess.scrollIntoView({ behavior: 'smooth' });
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    formSuccess.classList.remove('active');
-                }, 5000);
-            });
-        }
+        foodForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // In a real application, you would send the form data to a server here
+            // For this demo, we'll just show a success message
+            formSuccess.classList.add('active');
+            
+            // Reset form
+            foodForm.reset();
+            
+            // Scroll to success message
+            formSuccess.scrollIntoView({ behavior: 'smooth' });
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                formSuccess.classList.remove('active');
+            }, 5000);
+        });
         
         // Visitor Counter - Simulate real-time updates
         const visitorCountElement = document.getElementById('visitorCount');
-        let visitorCount = 12847;
+        let visitorCount = 1865;
         
         // Function to format number with commas
         function formatNumber(num) {
@@ -1837,71 +2642,16 @@ function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c
                 languageOptions.forEach(opt => opt.classList.remove('active'));
                 option.classList.add('active');
                 
-                // Store language preference
-                localStorage.setItem('preferred-language', lang);
-                
-                // Show language change notification
-                showLanguageChangeNotification(lang);
+                // Trigger Google Translate
+                setLang(lang);
                 
                 // Close dropdown
                 languageDropdown.classList.remove('active');
+                
+                // Store language preference
+                localStorage.setItem('preferred-language', lang);
             });
         });
-
-        // Show notification when language changes
-        function showLanguageChangeNotification(lang) {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: linear-gradient(to right, var(--primary-color), var(--luxury-gold));
-                color: white;
-                padding: 15px 25px;
-                border-radius: var(--radius);
-                box-shadow: var(--shadow);
-                z-index: 10000;
-                transform: translateX(150%);
-                transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            `;
-            
-            // Set notification text based on language
-            let text = '';
-            switch(lang) {
-                case 'th': text = 'เปลี่ยนภาษาเป็นไทยเรียบร้อยแล้ว'; break;
-                case 'en': text = 'Language changed to English'; break;
-                case 'zh-CN': text = '语言已更改为中文'; break;
-                case 'ja': text = '言語が日本語に変更されました'; break;
-                case 'ko': text = '언어가 한국어로 변경되었습니다'; break;
-                case 'fr': text = 'Langue changée en français'; break;
-                case 'de': text = 'Sprache wurde auf Deutsch geändert'; break;
-                case 'es': text = 'Idioma cambiado a español'; break;
-                case 'ru': text = 'Язык изменен на русский'; break;
-                case 'ar': text = 'تم تغيير اللغة إلى العربية'; break;
-                default: text = 'Language changed';
-            }
-            
-            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${text}`;
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 10);
-            
-            // Animate out after 3 seconds
-            setTimeout(() => {
-                notification.style.transform = 'translateX(150%)';
-                // Remove from DOM after animation
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 500);
-            }, 3000);
-        }
 
         // Set initial language based on localStorage or default
         function initLanguage() {
@@ -1910,14 +2660,7 @@ function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c
             // Find and activate corresponding option
             languageOptions.forEach(option => {
                 if (option.getAttribute('data-lang') === savedLang) {
-                    const flag = option.querySelector('.flag-icon').textContent;
-                    const text = option.querySelector('span:not(.flag-icon)').textContent;
-                    
-                    languageSelected.querySelector('.flag-icon').textContent = flag;
-                    languageSelected.querySelector('span:not(.flag-icon)').textContent = text;
-                    
-                    languageOptions.forEach(opt => opt.classList.remove('active'));
-                    option.classList.add('active');
+                    option.click();
                 }
             });
         }
@@ -1925,137 +2668,30 @@ function setLang(l){let c=document.querySelector("select.goog-te-combo");if(c){c
         // Initialize language on page load
         document.addEventListener('DOMContentLoaded', initLanguage);
         
-        // Animation on scroll functionality
-        function initAnimations() {
-            // Animate hero elements
-            const heroTitle = document.getElementById('hero-title');
-            const heroDesc = document.getElementById('hero-desc');
-            const heroCta = document.getElementById('hero-cta');
+        // Dynamic Weather Update
+        function updateWeather() {
+            const weatherIcon = document.querySelector('.weather-icon i');
+            const weatherTemp = document.querySelector('.weather-temp');
+            const weatherDetails = document.querySelector('.weather-details');
             
-            if (heroTitle) {
-                setTimeout(() => {
-                    heroTitle.classList.add('animate');
-                }, 300);
-                
-                setTimeout(() => {
-                    heroDesc.classList.add('animate');
-                }, 600);
-                
-                setTimeout(() => {
-                    heroCta.classList.add('animate');
-                }, 900);
-            }
+            // Simulate weather changes
+            const conditions = ['sun', 'cloud-sun', 'cloud', 'cloud-rain'];
+            const icons = ['fa-sun', 'fa-cloud-sun', 'fa-cloud', 'fa-cloud-rain'];
+            const descriptions = ['แจ่มใส', 'มีเมฆบางส่วน', 'เมฆมาก', 'มีฝนตกบางพื้นที่'];
             
-            // Animate elements on scroll
-            const animateElements = document.querySelectorAll('[data-animate]');
+            const randomIndex = Math.floor(Math.random() * conditions.length);
+            const temp = 30 + Math.floor(Math.random() * 6); // 30-35°C
             
-            function checkAnimation() {
-                const windowHeight = window.innerHeight;
-                const windowTop = window.scrollY;
-                const windowBottom = windowTop + windowHeight;
-                
-                animateElements.forEach(element => {
-                    const elementTop = element.offsetTop;
-                    const elementHeight = element.offsetHeight;
-                    const elementBottom = elementTop + elementHeight;
-                    
-                    // Check if element is in viewport
-                    if (elementBottom >= windowTop && elementTop <= windowBottom) {
-                        const delay = element.getAttribute('data-delay') || 0;
-                        
-                        setTimeout(() => {
-                            if (element.getAttribute('data-animate') === 'left') {
-                                element.classList.add('animate-left');
-                            } else if (element.getAttribute('data-animate') === 'right') {
-                                element.classList.add('animate-right');
-                            } else if (element.getAttribute('data-animate') === 'up') {
-                                element.classList.add('animate');
-                            }
-                        }, delay * 1000);
-                    }
-                });
-            }
-            
-            // Initial check
-            checkAnimation();
-            
-            // Check on scroll
-            window.addEventListener('scroll', checkAnimation);
+            weatherIcon.className = `fas fa-${icons[randomIndex]}`;
+            weatherTemp.textContent = `${temp}°C`;
+            weatherDetails.textContent = `สภาพอากาศ: ${descriptions[randomIndex]} • ความชื้น: ${60 + Math.floor(Math.random() * 15)}%`;
         }
         
-        // Initialize animations when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            initAnimations();
-            
-            // Create floating elements for luxury effect
-            createFloatingElements();
-        });
+        // Update weather every 30 minutes
+        setInterval(updateWeather, 30 * 60 * 1000);
         
-        // Create floating elements for luxury visual effect
-        function createFloatingElements() {
-            const hero = document.getElementById('hero');
-            if (!hero) return;
-            
-            // Create container for floating elements
-            const floatingContainer = document.createElement('div');
-            floatingContainer.className = 'floating-elements';
-            hero.appendChild(floatingContainer);
-            
-            // Create 10 floating elements
-            for (let i = 0; i < 10; i++) {
-                const element = document.createElement('div');
-                element.className = 'floating-element';
-                
-                // Random properties
-                const size = Math.random() * 20 + 5;
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                const duration = Math.random() * 20 + 10;
-                const delay = Math.random() * 5;
-                
-                // Apply styles
-                element.style.width = `${size}px`;
-                element.style.height = `${size}px`;
-                element.style.left = `${posX}%`;
-                element.style.top = `${posY}%`;
-                element.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
-                
-                floatingContainer.appendChild(element);
-            }
-            
-            // Add CSS for floating animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes float {
-                    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-                    33% { transform: translate(${Math.random() * 30 - 15}px, ${Math.random() * 30 - 15}px) rotate(${Math.random() * 20 - 10}deg); }
-                    66% { transform: translate(${Math.random() * 30 - 15}px, ${Math.random() * 30 - 15}px) rotate(${Math.random() * 20 - 10}deg); }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-        
-        // Parallax effect for hero background
-        window.addEventListener('scroll', () => {
-            const hero = document.getElementById('hero');
-            if (hero) {
-                const scrolled = window.pageYOffset;
-                const rate = scrolled * 0.5;
-                hero.style.transform = `translate3d(0, ${rate}px, 0)`;
-            }
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
-            }
-        });
+        // Initialize weather on page load
+        updateWeather();
     </script>
 </body>
 </html>
