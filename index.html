@@ -1422,64 +1422,6 @@
             opacity: 1;
         }
         
-        /* Weather Widget */
-        .weather-widget {
-            background: linear-gradient(to right, #e0f2fe, #f0f9ff);
-            border-radius: var(--radius);
-            padding: 25px;
-            box-shadow: var(--shadow);
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .weather-widget::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 80% 20%, rgba(13, 148, 136, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        
-        .weather-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .weather-icon {
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            animation: weatherFloat 3s ease-in-out infinite alternate;
-        }
-        
-        @keyframes weatherFloat {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-5px); }
-        }
-        
-        .weather-temp {
-            font-size: 2.2rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .weather-details {
-            font-size: 1rem;
-            color: var(--gray-color);
-        }
-        
         /* Scroll to Top Button */
         .scroll-to-top {
             position: fixed;
@@ -1648,12 +1590,6 @@
                 padding: 8px 15px;
             }
             
-            .weather-widget {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            
             .gallery-grid,
             .attractions-grid,
             .festivals-grid,
@@ -1807,26 +1743,6 @@
                 <p>สัมผัสความงามของทะเลสาบ นมัสการหลวงพ่อพระองค์แสน พิสูจน์รอยพระพุทธบาทภูเพ็ก และดื่มด่ำกับวัฒนธรรมอีสานเหนือ</p>
                 
                 <a href="#destinations" class="cta-button nav-link" data-page="destinations">สำรวจสถานที่ท่องเที่ยว</a>
-            </div>
-        </section>
-
-        <!-- Weather Widget -->
-        <section class="container" style="margin-top: -40px; margin-bottom: 40px; position: relative; z-index: 10;">
-            <div class="weather-widget">
-                <div class="weather-info">
-                    <div class="weather-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <div>
-                        <div class="weather-temp">32°C</div>
-                        <div class="weather-details">สภาพอากาศ: แจ่มใส • ความชื้น: 65%</div>
-                    </div>
-                </div>
-                <div>
-                    <div><strong>สกลนคร, ประเทศไทย</strong></div>
-                    <div>อุณหภูมิสูงสุด: 34°C, ต่ำสุด: 24°C</div>
-                    <div>เหมาะสำหรับการท่องเที่ยว</div>
-                </div>
             </div>
         </section>
 
@@ -3254,31 +3170,6 @@
 
         // Initialize language on page load
         document.addEventListener('DOMContentLoaded', initLanguage);
-        
-        // Dynamic Weather Update
-        function updateWeather() {
-            const weatherIcon = document.querySelector('.weather-icon i');
-            const weatherTemp = document.querySelector('.weather-temp');
-            const weatherDetails = document.querySelector('.weather-details');
-            
-            // Simulate weather changes
-            const conditions = ['sun', 'cloud-sun', 'cloud', 'cloud-rain'];
-            const icons = ['fa-sun', 'fa-cloud-sun', 'fa-cloud', 'fa-cloud-rain'];
-            const descriptions = ['แจ่มใส', 'มีเมฆบางส่วน', 'เมฆมาก', 'มีฝนตกบางพื้นที่'];
-            
-            const randomIndex = Math.floor(Math.random() * conditions.length);
-            const temp = 30 + Math.floor(Math.random() * 6); // 30-35°C
-            
-            weatherIcon.className = `fas fa-${icons[randomIndex]}`;
-            weatherTemp.textContent = `${temp}°C`;
-            weatherDetails.textContent = `สภาพอากาศ: ${descriptions[randomIndex]} • ความชื้น: ${60 + Math.floor(Math.random() * 15)}%`;
-        }
-        
-        // Update weather every 30 minutes
-        setInterval(updateWeather, 30 * 60 * 1000);
-        
-        // Initialize weather on page load
-        updateWeather();
         
         // Scroll to Top Button
         const scrollToTop = document.getElementById('scrollToTop');
